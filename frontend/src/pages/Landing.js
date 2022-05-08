@@ -16,8 +16,7 @@ function Landing(props) {
                 <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('./')}/>
             </div>
             <div className='navbar_links'>
-                <button>Sign in</button>
-                <button>Sign up</button>
+                <button onClick={() => navigate('./sign-in')}>Sign in</button>
                 <p>Contact</p>
                 <p>About us</p>
             </div>

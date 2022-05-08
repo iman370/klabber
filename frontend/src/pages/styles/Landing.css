@@ -28,8 +28,6 @@
     padding-left: 1rem;
     padding-right: 1rem;
 
-    width: 100%;
-
     display: flex;
     justify-content: space-between;
 
@@ -50,6 +48,22 @@
 .navbar_links p {
     color: azure;
     margin: 0 1rem;
+    font-family: inter;
+    font-size: medium;
+}
+
+/*Changes all the buttons inside the navbar_links container*/
+.navbar_links button {
+    width: 102px;
+    height: 38px;
+    left: 1152px;
+    top: 55px;
+
+    background-color: black;
+    border-radius: 5px;
+    border-style: hidden;
+
+    color: azure;
     font-family: inter;
     font-size: medium;
 }
