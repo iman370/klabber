@@ -1,0 +1,57 @@
+/*PICTURES AND LOGOS*/
+.klabber-logo {
+    height: 100px;
+    width: 200px;
+}
+
+/*NAVIGATION BAR*/
+.navbar {
+
+    /* ff 3.6+ */
+    background:-moz-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%); 
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+
+    /* opera 11.10+ */
+    background:-o-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#751919', endColorstr='#000000', GradientType=0 );
+
+    /* ie 10+ */
+    background:-ms-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+
+    /* global 94%+ browsers support */
+    background:linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.navbar_logo {
+    margin-right: 2rem;
+}
+
+.navbar_links {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    flex: 1;
+}
+
+/*Changes all the text inside the navbar_links container*/
+.navbar_links p {
+    color: azure;
+    margin: 0 1rem;
+    font-family: inter;
+    font-size: medium;
+}
+
+    
