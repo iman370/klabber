@@ -66,6 +66,10 @@
     color: azure;
     font-family: inter;
     font-size: medium;
+    text-align: center;
 }
 
+.h2 {
+    align-items: center;
+}
     

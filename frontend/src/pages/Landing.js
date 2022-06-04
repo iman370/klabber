@@ -24,6 +24,8 @@ function Landing(props) {
 
         <div id="content">
             <h2>welcome to klabber</h2>
+            <button onClick={() => navigate('./sign-in')}>Sign In</button>
+            <button onClick={() => navigate('./sign-up')}>Sign Up</button>
         </div>
         <Footer />
         </>
