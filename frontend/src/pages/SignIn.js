@@ -2,16 +2,13 @@ import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/SignUp.css';
+import './styles/SignIn.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function SignIn(props) {
     const [userId, setUserId] = useState(-1)
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
-    const [showFlashMessage, setShowFlashMessage] = React.useState(false)
-    const [flashMessageSuccess, setFlashMessageSuccess] = React.useState(false)
-    const [flashMessageText, setFlashMessageText] = React.useState('')
     const isFirstRender = useRef(true)
 
     let navigate = useNavigate()
@@ -55,11 +52,6 @@ function SignIn(props) {
                 return res.json()
             }
             else {
-                setFlashMessageSuccess(false)
-                setFlashMessageText('Error. Check username/password details are correct')
-                setShowFlashMessage(true)
-                window.scrollTo({top: 0, behavior: 'smooth'})
-                setTimeout(() => {setShowFlashMessage(false)}, 2000)
             }
         }).then((data) => {
             setUserId(data.id)

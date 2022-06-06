@@ -67,6 +67,8 @@
     font-family: inter;
     font-size: medium;
     text-align: center;
+
+    cursor: pointer;
 }
 
 .h2 {
