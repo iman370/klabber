@@ -65,10 +65,10 @@ function SignUp(props) {
         <>
         <div className='navbar'>
             <div className='navbar_logo'>
-                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('./')}/>
+                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../')}/>
             </div>
             <div className='navbar_links'>
-                <button onClick={() => navigate('./sign-up')}>Sign Up</button>
+                <button onClick={() => navigate('../sign-in')}>Sign In</button>
                 <p>Contact</p>
                 <p>About us</p>
             </div>
