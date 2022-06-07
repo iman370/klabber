@@ -75,13 +75,19 @@ function SignUp(props) {
         </div>
 
         <div id="content">
-            <h2>Create an Account</h2>
-            <input type="text" className="Email" placeholder="Email" id="email"></input><br></br>
-            <input type="text" className="Username" placeholder="Username" id="username"></input><br></br>
-            <input type="password" className="Password" placeholder="Password" id="password"></input><br></br>
+            <div id='mainbox1'>
+                <h2>Don't have an account?</h2>
+                <h1>Sign up.</h1>
+                <input type="text" className="Username" placeholder="Username" id="username"></input><br></br>
+                <div className = "divider_small" />
+                <input type="text" className="Email" placeholder="Email" id="email"></input><br></br>
+                <div className = "divider_small" />
+                <input type="password" className="Password" placeholder="Password" id="password"></input><br></br>
+                <div className = "divider" />
 
-            <button onClick={() => {signUp(document.getElementById('email').value,document.getElementById('username').value,document.getElementById('password').value)}}>Register</button>
+                <button onClick={() => {signUp(document.getElementById('email').value,document.getElementById('username').value,document.getElementById('password').value)}}>Sign up</button>
 
+            </div>
         </div>
         <Footer />
         </>

@@ -74,14 +74,17 @@ function SignIn(props) {
         </div>
 
         <div id="content">
-            <h2>Already have an account?</h2>
-            <h1>Sign in.</h1>
-            <input type="text" className="Username" placeholder="Username" id="username"></input><br></br>
-            <input type="password" className="Password" placeholder="Password" id="password"></input><br></br><br></br>
-            
-            <button onClick={() => login(document.getElementById('username').value, document.getElementById('password').value)}>Sign In</button>
-
+            <div id='mainbox1'>
+                <h2>Already have an account?</h2>
+                <h1>Sign in.</h1>
+                <input type="text" className="Username" placeholder="Username" id="username"></input><br></br>
+                <div className = "divider_small" />
+                <input type="password" className="Password" placeholder="Password" id="password"></input><br></br><br></br>
+                <div className = "divider" />
+                <button onClick={() => login(document.getElementById('username').value, document.getElementById('password').value)}>Sign In</button>
+            </div>
         </div>
+
         <Footer />
         </>   
     )

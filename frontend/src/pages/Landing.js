@@ -32,6 +32,7 @@ function Landing(props) {
                 <button onClick={() => navigate('../sign-up')}>Sign Up</button>
             </div>
         </div>
+        
         <Footer />
         </>
 
