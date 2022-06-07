@@ -80,6 +80,7 @@ function SignIn(props) {
                 <input type="text" className="Username" placeholder="Username" id="username"></input><br></br>
                 <div className = "divider_small" />
                 <input type="password" className="Password" placeholder="Password" id="password"></input><br></br><br></br>
+                <a href='../sign-up'>Don't have an account? Sign up!</a>
                 <div className = "divider" />
                 <button onClick={() => login(document.getElementById('username').value, document.getElementById('password').value)}>Sign In</button>
             </div>
