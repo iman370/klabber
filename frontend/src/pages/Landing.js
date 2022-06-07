@@ -17,15 +17,20 @@ function Landing(props) {
             </div>
             <div className='navbar_links'>
                 <button onClick={() => navigate('../sign-in')}>Sign in</button>
+                <p>Privacy</p>
+                <p>Terms</p>
                 <p>Contact</p>
-                <p>About us</p>
+                <p>What is klabber?</p>
             </div>
         </div>
 
-        <div id="content">
-            <h2>welcome to klabber</h2>
-            <button onClick={() => navigate('../sign-in')}>Sign In</button>
-            <button onClick={() => navigate('../sign-up')}>Sign Up</button>
+        <div id='content'>
+            <div id='mainbox1'>
+                <h2>welcome to klabber</h2>
+                <button onClick={() => navigate('../sign-in')}>Sign In</button>
+                <div className = "divider" />
+                <button onClick={() => navigate('../sign-up')}>Sign Up</button>
+            </div>
         </div>
         <Footer />
         </>

@@ -1,0 +1,16 @@
+.content {
+    align-items: center;
+}
+
+.content button {
+    align-self: center;
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #fff;
+    text-align: center;
+    background-color: #751919;
+    border-radius: 12px;
+    display: block;
+    cursor: pointer;
+  }
