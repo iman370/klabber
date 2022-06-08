@@ -8,11 +8,10 @@ import klabberLogo from '../images/klabber-logo.png';
 function Settings(props) {
     let navigate = useNavigate()
     const location = useLocation();
-    const [email, setEmail] = useState('')
 
     let username = location.state.username
     let first_name = location.state.first_name
-    let userEmail = location.state.email
+    let email = location.state.email
 
     const getCookie = (name) => {
         var cookieValue = null;
@@ -30,7 +29,25 @@ function Settings(props) {
         return cookieValue;
     }
 
-    const updateEmail = (email) => {
+    const updateNickname = (nickname) => {
+        var url = 'http://127.0.0.1:8000/api/update-nickname/'
+        var csrftoken = getCookie('csrftoken')
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': csrftoken,
+            },
+            body: JSON.stringify({'username': username, 'first_name':nickname,'password': null})
+        }).then((res) => {
+            if (res.ok) {
+            }
+        }).then((data) => {
+            first_name = data.first_name
+        })
+    }
+
+    const updateEmail = (newEmail) => {
         var url = 'http://127.0.0.1:8000/api/update-email/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
@@ -39,13 +56,12 @@ function Settings(props) {
                 'Content-type': 'application/json',
                 'X-CSRFToken': csrftoken,
             },
-            body: JSON.stringify({'username': username, 'email':email,'password': null})
+            body: JSON.stringify({'username': username, 'email':newEmail,'password': null})
         }).then((res) => {
             if (res.ok) {
             }
         }).then((data) => {
-            setEmail(data.email)
-            userEmail = data.email
+            email = data.email
         })
     }
 
@@ -73,7 +89,7 @@ function Settings(props) {
                 <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home')}/>
             </div>
             <div className='navbar_links'>
-                <button onClick={() => navigate('../home',{state:{username,first_name,userEmail}})}>Home</button>
+                <button onClick={() => navigate('../home',{state:{username,first_name,email}})}>Home</button>
                 <p>Privacy</p>
                 <p>Terms</p>
                 <p>Contact</p>
@@ -86,8 +102,14 @@ function Settings(props) {
                 <h1>Username: {username}</h1>
                 <div className = "divider" />
 
+                <h2>Update Nickname</h2>
+                <h1>Current Nickname: {first_name}</h1>
+                <input type="text" className="UpdateNickname" placeholder="Update Nickname" id="nickname"></input><br></br>
+                <button onClick={() => updateNickname(document.getElementById('nickname').value)}>Update Nickname</button>
+                <div className = "divider" />
+
                 <h2>Update Email</h2>
-                <h1>Current Email: {userEmail}</h1>
+                <h1>Current Email: {email}</h1>
                 <input type="text" className="UpdateEmail" placeholder="Update Email" id="email"></input><br></br>
                 <button onClick={() => updateEmail(document.getElementById('email').value)}>Update Email</button>
                 <div className = "divider" />

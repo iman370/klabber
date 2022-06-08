@@ -96,3 +96,24 @@ def update_password(request):
             return Response(serializer.data, status= status.HTTP_200_OK)
 
     return Response(serializer.data, status = status.HTTP_404_NOT_FOUND) 
+
+@api_view(['PUT'])
+def update_firstName(request):
+    data = request.data
+    username = data['username']
+    first_name = data['first_name']
+
+    try:
+        user = User.objects.get(username=username)
+        password = user.password
+        oldNickname = user.first_name
+        email = user.email
+        serializer = UserSerializer(instance = user, data = {'username':username,'first_name':oldNickname,'email':email,'password':password})
+        if serializer.is_valid():
+            user.first_name = first_name
+            user.save(update_fields=['first_name'])
+            return Response(serializer.data, status.HTTP_200_OK)
+        return Response((), status=status.HTTP_400_BAD_REQUEST)
+
+    except:
+        return Response((), status = status.HTTP_404_NOT_FOUND)
