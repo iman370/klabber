@@ -13,12 +13,15 @@ def sign_up(request):
     username = data['username']
     nickname = data['first_name']
     password = data['password']
+    password1 = data['password1']
     if (email == '' or username == '' or nickname == '' or password == ''):
         return Response('empty-field', status.HTTP_400_BAD_REQUEST)
     if (User.objects.filter(email=email).exists()):
         return Response('email-exists', status.HTTP_400_BAD_REQUEST)
     if (User.objects.filter(username=username).exists()):
         return Response('username-exists', status.HTTP_400_BAD_REQUEST)
+    if (password != password1):
+        return Response('passwords-dont-match', status.HTTP_400_BAD_REQUEST)
     serializer = UserSerializer(data=data)
     if serializer.is_valid():
         serializer.save()
@@ -77,9 +80,12 @@ def update_password(request):
     username = data['username']
     password = data['password']
     newPassword = data['newPassword']
+    newPassword1 = data['newPassword1']
 
     if (password == ''):
         return Response('empty-field', status.HTTP_400_BAD_REQUEST)
+    if (newPassword != newPassword1):
+        return Response('passwords-dont-match', status.HTTP_400_BAD_REQUEST)
 
     user = User.objects.get(username=username)
     email = user.email

@@ -65,7 +65,7 @@ function Settings(props) {
         })
     }
 
-    const updatePassword = (password, newPassword) => {
+    const updatePassword = (password, newPassword, newPassword1) => {
         var url = 'http://127.0.0.1:8000/api/update-password/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
@@ -74,7 +74,7 @@ function Settings(props) {
                 'Content-type': 'application/json',
                 'X-CSRFToken': csrftoken,
             },
-            body: JSON.stringify({'username': username,'password': password, 'newPassword': newPassword})
+            body: JSON.stringify({'username': username,'password': password, 'newPassword': newPassword, 'newPassword1':newPassword1})
         }).then((res) => {
             if (res.ok) {
             }
@@ -86,7 +86,7 @@ function Settings(props) {
         <>
         <div className='navbar'>
             <div className='navbar_logo'>
-                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home')}/>
+                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home',{state:{username,first_name,email}})}/>
             </div>
             <div className='navbar_links'>
                 <button onClick={() => navigate('../home',{state:{username,first_name,email}})}>Home</button>
@@ -102,22 +102,23 @@ function Settings(props) {
                 <h1>Username: {username}</h1>
                 <div className = "divider" />
 
-                <h2>Update Nickname</h2>
-                <h1>Current Nickname: {first_name}</h1>
+                <h1>Update Nickname</h1>
+                <h2>Current Nickname: {first_name}</h2>
                 <input type="text" className="UpdateNickname" placeholder="Update Nickname" id="nickname"></input><br></br>
                 <button onClick={() => updateNickname(document.getElementById('nickname').value)}>Update Nickname</button>
                 <div className = "divider" />
 
-                <h2>Update Email</h2>
-                <h1>Current Email: {email}</h1>
+                <h1>Update Email</h1>
+                <h2>Current Email: {email}</h2>
                 <input type="text" className="UpdateEmail" placeholder="Update Email" id="email"></input><br></br>
                 <button onClick={() => updateEmail(document.getElementById('email').value)}>Update Email</button>
                 <div className = "divider" />
 
-                <h2>Update Password</h2>
+                <h1>Update Password</h1>
                 <input type="password" className="UpdatePassword" placeholder="New Password" id="newPassword"></input><br></br>
+                <input type="password" className="UpdatePassword1" placeholder="Re-type Password" id="newPassword1"></input><br></br>
                 <input type="password" className="password" placeholder="Current Password" id="password"></input><br></br>
-                <button onClick={() => updatePassword(document.getElementById('password').value, document.getElementById('newPassword').value)}>Change Password</button>
+                <button onClick={() => updatePassword(document.getElementById('password').value, document.getElementById('newPassword').value, document.getElementById('newPassword1').value)}>Change Password</button>
                 <div className = "divider" />
             </div>
 

@@ -16,7 +16,7 @@ function Home(props) {
         <>
         <div className='navbar'>
             <div className='navbar_logo'>
-                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home')}/>
+                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home',{state:{username,first_name,email}})}/>
             </div>
             <div className='navbar_links'>
                 <button onClick={() => navigate('../my-profile',{state:{username,first_name,email}})}>My Profile</button>
@@ -29,7 +29,7 @@ function Home(props) {
 
         <div id="content">
             <h1>Welcome {first_name}!</h1>
-            <button onClick={() => navigate('../settings',{state:{username,first_name,email}})}>My Profile</button>
+            <button onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</button>
 
 
         </div>

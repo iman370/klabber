@@ -40,7 +40,7 @@ function SignUp(props) {
         navigate(`../home`,{state:{userId,username, first_name, email}})
       }, [userId,username,first_name, email])
       
-    const signUp = (email, username, first_name, password) => {
+    const signUp = (email, username, first_name, password, password1) => {
         var url = 'http://127.0.0.1:8000/api/signup/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
@@ -49,7 +49,7 @@ function SignUp(props) {
                 'Content-type': 'application/json',
                 'X-CSRFToken': csrftoken,
             },
-            body: JSON.stringify({'email':email,'username': username, 'first_name':first_name, 'password': password})
+            body: JSON.stringify({'email':email,'username': username, 'first_name':first_name, 'password': password, 'password1':password1})
         }).then((res) => {
             console.log(res)
             if (res.ok) {
@@ -90,10 +90,11 @@ function SignUp(props) {
                 <input type="text" className="Email" placeholder="Email" id="email"></input><br></br>
                 <div className = "divider_small" />
                 <input type="password" className="Password" placeholder="Password" id="password"></input><br></br>
+                <input type="password" className="Password1" placeholder="Re-type Password" id="password1"></input><br></br>
                 <a href='../sign-in'>Already have an account? Sign in!</a>
                 <div className = "divider" />
 
-                <button onClick={() => {signUp(document.getElementById('email').value,document.getElementById('username').value,document.getElementById('nickname').value,document.getElementById('password').value)}}>Sign up</button>
+                <button onClick={() => {signUp(document.getElementById('email').value,document.getElementById('username').value,document.getElementById('nickname').value,document.getElementById('password').value,document.getElementById('password1').value)}}>Sign up</button>
 
             </div>
         </div>
