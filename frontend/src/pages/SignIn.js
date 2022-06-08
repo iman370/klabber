@@ -35,7 +35,7 @@ function SignIn(props) {
           isFirstRender.current = false // toggle flag after first render/mounting
           return;
         }
-        navigate(`../home`,{state:{userId, username, first_name}})
+        navigate(`../home`,{state:{userId, username, first_name, email}})
       }, [username])
 
     const login = (username,password) => {
@@ -69,8 +69,10 @@ function SignIn(props) {
             </div>
             <div className='navbar_links'>
                 <button onClick={() => navigate('../sign-up')}>Sign Up</button>
+                <p>Privacy</p>
+                <p>Terms</p>
                 <p>Contact</p>
-                <p>About us</p>
+                <p>What is klabber?</p>
             </div>
         </div>
 

@@ -1,0 +1,54 @@
+/*MAIN CONTENTS*/
+#content {
+    display: block;
+}
+
+#content #mainbox1 {
+    width: 480px;
+    display: block;
+    margin: 130px auto;
+}
+
+#content #mainbox1 button {
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #fff;
+    text-align: center;
+    background-color: #751919;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+
+#content #mainbox1 input {
+    background-color: azure;
+    color: #751919;
+    font-size: 24px;
+    line-height: 72px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: none;
+    width: 100%;
+}
+
+#content #mainbox1 a {
+    color: rgb(139, 143, 143);
+    position: relative;
+    right: -28%;
+}
+
+.divider {
+    height: 30px;
+}
+
+.divider_small {
+    height: 10px;
+}
+
+.h2 {
+    align-items: center;
+}

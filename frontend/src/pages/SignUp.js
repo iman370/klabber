@@ -72,8 +72,10 @@ function SignUp(props) {
             </div>
             <div className='navbar_links'>
                 <button onClick={() => navigate('../sign-in')}>Sign In</button>
+                <p>Privacy</p>
+                <p>Terms</p>
                 <p>Contact</p>
-                <p>About us</p>
+                <p>What is klabber?</p>
             </div>
         </div>
 

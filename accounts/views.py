@@ -46,7 +46,7 @@ def login(request):
 
     return Response(serializer.data, status = status.HTTP_404_NOT_FOUND)
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def update_email(request):
     data = request.data
     username = data['username']
@@ -71,7 +71,7 @@ def update_email(request):
     except:
         return Response((), status = status.HTTP_404_NOT_FOUND)
 
-@api_view(['POST'])
+@api_view(['PUT'])
 def update_password(request):
     data = request.data
     username = data['username']

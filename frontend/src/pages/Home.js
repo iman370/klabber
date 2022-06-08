@@ -16,18 +16,21 @@ function Home(props) {
         <>
         <div className='navbar'>
             <div className='navbar_logo'>
-                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../')}/>
+                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home')}/>
             </div>
             <div className='navbar_links'>
-                <button onClick={() => navigate('../my-profile')}>My Profile</button>
+                <button onClick={() => navigate('../my-profile',{state:{username,first_name,email}})}>My Profile</button>
+                <p>Privacy</p>
+                <p>Terms</p>
                 <p>Contact</p>
-                <p>About us</p>
+                <p>What is klabber?</p>
             </div>
         </div>
 
         <div id="content">
-            <h2>Welcome {first_name}!</h2>
-            <h1>Username: {username}</h1>
+            <h1>Welcome {first_name}!</h1>
+            <button onClick={() => navigate('../settings',{state:{username,first_name,email}})}>My Profile</button>
+
 
         </div>
         <Footer />
