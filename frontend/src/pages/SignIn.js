@@ -8,6 +8,7 @@ import klabberLogo from '../images/klabber-logo.png';
 function SignIn(props) {
     const [userId, setUserId] = useState(-1)
     const [username, setUsername] = useState('')
+    const [first_name, setFirstname] = useState('')
     const [email, setEmail] = useState('')
     const isFirstRender = useRef(true)
 
@@ -34,7 +35,7 @@ function SignIn(props) {
           isFirstRender.current = false // toggle flag after first render/mounting
           return;
         }
-        navigate(`../home`,{state:{userId, username}})
+        navigate(`../home`,{state:{userId, username, first_name}})
       }, [username])
 
     const login = (username,password) => {
@@ -46,7 +47,7 @@ function SignIn(props) {
                 'Content-type': 'application/json',
                 'X-CSRFToken': csrftoken,
             },
-            body: JSON.stringify({'username': username, 'email':null,'password': password})
+            body: JSON.stringify({'username': username, 'first_name':null, 'email':null,'password': password})
         }).then((res) => {
             if (res.ok) {
                 return res.json()
@@ -54,8 +55,8 @@ function SignIn(props) {
             else {
             }
         }).then((data) => {
-            setUserId(data.id)
             setUsername(data.username)
+            setFirstname(data.first_name)
             setEmail(data.email)
         })
     }

@@ -8,8 +8,9 @@ import klabberLogo from '../images/klabber-logo.png';
 function Home(props) {
     let navigate = useNavigate()
     const location = useLocation();
-    let userId = location.state.userId
     let username = location.state.username
+    let first_name = location.state.first_name
+    let email = location.state.email
 
     return (
         <>
@@ -25,7 +26,8 @@ function Home(props) {
         </div>
 
         <div id="content">
-            <h2>Welcome {username}!</h2>
+            <h2>Welcome {first_name}!</h2>
+            <h1>Username: {username}</h1>
 
         </div>
         <Footer />

@@ -11,8 +11,9 @@ def sign_up(request):
     data = request.data
     email = data['email']
     username = data['username']
+    nickname = data['first_name']
     password = data['password']
-    if (email == '' or username == '' or password == ''):
+    if (email == '' or username == '' or nickname == '' or password == ''):
         return Response('empty-field', status.HTTP_400_BAD_REQUEST)
     if (User.objects.filter(email=email).exists()):
         return Response('email-exists', status.HTTP_400_BAD_REQUEST)
@@ -32,7 +33,8 @@ def login(request):
     try:
         user = User.objects.get(username=username)
         email = user.email
-        serializer = UserSerializer(instance = user, data = {'username':username,'email':email,'password':password})
+        nickname = user.first_name
+        serializer = UserSerializer(instance = user, data = {'username':username,'first_name':nickname,'email':email,'password':password})
 
         if serializer.is_valid():
             user = authenticate(request, username=username, password=password)
@@ -57,7 +59,8 @@ def update_email(request):
             return Response('email-exists', status.HTTP_400_BAD_REQUEST)
         oldEmail = user.email
         password = user.password
-        serializer = UserSerializer(instance = user, data = {'username':username,'email':oldEmail,'password':password})
+        nickname = user.first_name
+        serializer = UserSerializer(instance = user, data = {'username':username,'first_name':nickname,'email':oldEmail,'password':password})
         if serializer.is_valid():
             user.email = email
             user.save(update_fields=['email'])
@@ -80,8 +83,9 @@ def update_password(request):
 
     user = User.objects.get(username=username)
     email = user.email
+    nickname = user.first_name
 
-    serializer = UserSerializer(instance = user, data = {'username':username,'email':email,'password':password})
+    serializer = UserSerializer(instance = user, data = {'username':username,'first_name':nickname,'email':email,'password':password})
 
     if serializer.is_valid():
         user = authenticate(request, username=username, password=password)

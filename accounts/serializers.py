@@ -5,8 +5,8 @@ from rest_framework_jwt.settings import api_settings
 class UserSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = User
-		fields = ('id','username','email','password')
+		fields = ('id','username', 'first_name','email','password')
 		extra_kwargs = {"password":{'write_only': True}}
 
 	def create(self,validated_data):
-		return User.objects.create_user(validated_data['username'],validated_data['email'],validated_data['password'])
+		return User.objects.create_user(self.validated_data['username'],first_name=validated_data['first_name'],email=validated_data['email'],password=validated_data['password'])

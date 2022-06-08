@@ -35,6 +35,12 @@
     width: 100%;
 }
 
+#content #mainbox1 a {
+    color: rgb(139, 143, 143);
+    position: relative;
+    right: -28%;
+}
+
 .divider {
     height: 30px;
 }

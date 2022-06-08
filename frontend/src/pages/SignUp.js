@@ -11,7 +11,9 @@ function SignUp(props) {
 
     const isFirstRender = useRef(true)
 
+    const [userId, setUserId] = useState('');
     const [username, setUsername] = useState('');
+    const [first_name, setFirstname] = useState('');
     const [email, setEmail] = useState('');
 
     const getCookie = (name) => {
@@ -35,10 +37,10 @@ function SignUp(props) {
           isFirstRender.current = false // toggle flag after first render/mounting
           return;
         }
-        navigate(`../home`,{state:{username, email}})
-      }, [username,email])
+        navigate(`../home`,{state:{userId,username, first_name, email}})
+      }, [userId,username,first_name, email])
       
-    const signUp = (email, username, password) => {
+    const signUp = (email, username, first_name, password) => {
         var url = 'http://127.0.0.1:8000/api/signup/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
@@ -47,7 +49,7 @@ function SignUp(props) {
                 'Content-type': 'application/json',
                 'X-CSRFToken': csrftoken,
             },
-            body: JSON.stringify({'email':email,'username': username, 'password': password})
+            body: JSON.stringify({'email':email,'username': username, 'first_name':first_name, 'password': password})
         }).then((res) => {
             console.log(res)
             if (res.ok) {
@@ -57,6 +59,7 @@ function SignUp(props) {
             }
         }).then((data) => {
             setUsername(data.username)
+            setFirstname(data.first_name)
             setEmail(data.email)
         })
     }
@@ -80,12 +83,15 @@ function SignUp(props) {
                 <h1>Sign up.</h1>
                 <input type="text" className="Username" placeholder="Username" id="username"></input><br></br>
                 <div className = "divider_small" />
+                <input type="text" className="Nickname" placeholder="Nickname" id="nickname"></input><br></br>
+                <div className = "divider_small" />
                 <input type="text" className="Email" placeholder="Email" id="email"></input><br></br>
                 <div className = "divider_small" />
                 <input type="password" className="Password" placeholder="Password" id="password"></input><br></br>
+                <a href='../sign-in'>Already have an account? Sign in!</a>
                 <div className = "divider" />
 
-                <button onClick={() => {signUp(document.getElementById('email').value,document.getElementById('username').value,document.getElementById('password').value)}}>Sign up</button>
+                <button onClick={() => {signUp(document.getElementById('email').value,document.getElementById('username').value,document.getElementById('nickname').value,document.getElementById('password').value)}}>Sign up</button>
 
             </div>
         </div>
