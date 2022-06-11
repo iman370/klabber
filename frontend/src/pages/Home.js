@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
+import Card from 'react-bootstrap/Card'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
@@ -29,7 +30,18 @@ function Home(props) {
 
         <div id="content">
             <h1>Welcome {first_name}!</h1>
+            <Card bg={'secondary'} border={"primary"} style={{ width: '18rem' }} className="profileCard">
+                <Card.Body>
+                    <Card.Title>{first_name}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{username}</Card.Subtitle>
+                    <Card.Text>
+                    Hellooooo
+                    </Card.Text>
+                    <Card.Link href="../settings">Card Link</Card.Link>
+                </Card.Body>
+                </Card>
             <button onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</button>
+            <div className='divider' />
 
 
         </div>
