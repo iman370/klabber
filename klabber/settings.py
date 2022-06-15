@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
+    'events.apps.EventsConfig',
+    'friends.apps.FriendsConfig',
+    'klabs.apps.KlabsConfig',
     'rest_framework',
     'rest_framework_jwt',
 ]
