@@ -1,5 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react'
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
@@ -12,6 +12,16 @@ function Friends(props) {
     let username = location.state.username
     let first_name = location.state.first_name
     let email = location.state.email
+
+    //All users
+    const [userList, setUserList] = useState(['There are no other users.'])
+
+    //Friends
+    const [friendList, setFriendList] = useState(['You have no friends.'])
+
+    useEffect(() => {
+        setUserList(["USER 1","USER 2"])
+      })
 
     return (
         <>
@@ -28,6 +38,25 @@ function Friends(props) {
             </div>
         </div>
 
+        <div id="content">
+            <h1>Other Users</h1>
+                <div id="post-wrapper"> 
+                    {userList.map(function(user, index){
+                        return(
+                            <div key={index} className="post-wrapper flex-wrapper">
+                                <span>
+                                    <Card className={"test"}>
+                                        {user}
+                                    </Card>
+                                    <div className = "divider" />
+                                </span>
+                            </div>
+                        )
+                    })}
+                </div>
+            <div className='divider' />
+
+            </div>
         <Footer />
         </>  
     )
