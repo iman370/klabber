@@ -3,10 +3,10 @@ import Card from 'react-bootstrap/Card'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/Home.css';
+import './styles/Friends.css';
 import klabberLogo from '../images/klabber-logo.png';
 
-function Home(props) {
+function Friends(props) {
     let navigate = useNavigate()
     const location = useLocation();
     let username = location.state.username
@@ -28,25 +28,9 @@ function Home(props) {
             </div>
         </div>
 
-        <div id="content">
-            <h1>Welcome {first_name}!</h1>
-            <Card style={{ width: '18rem' }} className="profileCard">
-                <Card.Body>
-                    <Card.Title>{first_name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">@{username}</Card.Subtitle>
-                    <Card.Text>Hellooooo</Card.Text>
-                    <Card.Link onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</Card.Link>
-                </Card.Body>
-            </Card>
-            <div className='divider' />
-            <button onClick={() => navigate('../friends',{state:{username,first_name,email}})}>Friends</button>
-            <div className='divider' />
-
-
-        </div>
         <Footer />
         </>  
     )
 }
 
-export default Home
+export default Friends

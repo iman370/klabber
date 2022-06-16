@@ -10,6 +10,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import Settings from './pages/Settings';
+import Friends from './pages/Friends';
 
 const App = () => {
   let routes = useRoutes([
@@ -18,6 +19,7 @@ const App = () => {
     { path: "/sign-up", element: <SignUp /> },
     { path: "/home", element: <Home /> },
     { path: "/settings", element: <Settings /> },
+    { path: "/friends", element: <Friends /> },
   ]);
   return routes;
 };
