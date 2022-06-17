@@ -12,5 +12,6 @@ urlpatterns = [
     path('api/update-email/', views.update_email, name="update_email"),
     path('api/update-password/', views.update_password, name="update_password"),
     path('api/update-nickname/', views.update_firstName, name="update_firstName"),
+    path('api/get-all-users/', views.get_all_users, name="get_all_users"),
 
 ]

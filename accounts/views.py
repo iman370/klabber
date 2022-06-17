@@ -3,6 +3,7 @@ from .serializers import UserSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate
 from rest_framework import status
 
@@ -123,3 +124,12 @@ def update_firstName(request):
 
     except:
         return Response((), status = status.HTTP_404_NOT_FOUND)
+
+@api_view(['GET'])
+def get_all_users(request):
+    User = get_user_model()
+    users = User.objects.all()
+    usernames = []
+    for user in users:
+        usernames.append(user.username)
+    return Response(usernames, status=status.HTTP_200_OK)

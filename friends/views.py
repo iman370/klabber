@@ -9,12 +9,3 @@ from .serializers import FriendSerializer
 from .serializers import FriendRequestSerializer
 
 from rest_framework.decorators import api_view
-
-@api_view(['GET'])
-def get_all_users(request):
-    User = get_user_model()
-    users = User.objects.all()
-    usernames = []
-    for user in users:
-        usernames.append(user.username)
-    return Response(usernames, status=status.HTTP_200_OK)

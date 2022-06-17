@@ -35,22 +35,21 @@ function Friends(props) {
         return cookieValue;
     }
 
-    // Gets all users
+    // Gets all users except the current user
     useEffect(() => {
         let mounted = true;
         fetch('http://127.0.0.1:8000/api/get-all-users/', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken'),
             },
             body: JSON.stringify()
+        }).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
         }).then((data) => {
-            setUserList([data.usernames])
-            console.log(userList)
-            console.log("aDATA:")
-            console.log(data.usernames)
-            //setUserList(["USER 1","USER 2"])
+            setUserList([data])
         }, [userList])
         return () => mounted = false;
       }, [])
