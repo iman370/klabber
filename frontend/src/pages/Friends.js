@@ -36,24 +36,20 @@ function Friends(props) {
     }
 
     useEffect(() => {
-        const getAllUsers = (username) => {
-            var url = 'http://127.0.0.1:8000/api/get-all-users/'
-            var csrftoken = getCookie('csrftoken')
-            fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-type': 'application/json',
-                    'X-CSRFToken': csrftoken,
-                },
-                body: JSON.stringify({'username': username})
-            }).then((data) => {
-                //setUserList(data)
-                setUserList(["USER 1","USER 2"])
-            })
-        }
-        //setUserList(["USER 1","USER 2"])
-        getAllUsers(username)
-      })
+        let mounted = true;
+        fetch('http://127.0.0.1:8000/api/get-all-users/', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+            body: JSON.stringify({'username': username})
+        }).then((data) => {
+            setUserList(data)
+            //setUserList(["USER 1","USER 2"])
+        })
+        return () => mounted = false;
+      }, [userList])
 
     return (
         <>
