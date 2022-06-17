@@ -35,6 +35,7 @@ function Friends(props) {
         return cookieValue;
     }
 
+    // Gets all users
     useEffect(() => {
         let mounted = true;
         fetch('http://127.0.0.1:8000/api/get-all-users/', {
@@ -43,13 +44,16 @@ function Friends(props) {
                 'Content-type': 'application/json',
                 'X-CSRFToken': getCookie('csrftoken'),
             },
-            body: JSON.stringify({'username': username})
+            body: JSON.stringify()
         }).then((data) => {
-            setUserList(data)
+            setUserList([data.usernames])
+            console.log(userList)
+            console.log("aDATA:")
+            console.log(data.usernames)
             //setUserList(["USER 1","USER 2"])
-        })
+        }, [userList])
         return () => mounted = false;
-      }, [userList])
+      }, [])
 
     return (
         <>
