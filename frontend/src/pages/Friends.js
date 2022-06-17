@@ -19,8 +19,40 @@ function Friends(props) {
     //Friends
     const [friendList, setFriendList] = useState(['You have no friends.'])
 
+    const getCookie = (name) => {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
     useEffect(() => {
-        setUserList(["USER 1","USER 2"])
+        const getAllUsers = (username) => {
+            var url = 'http://127.0.0.1:8000/api/get-all-users/'
+            var csrftoken = getCookie('csrftoken')
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-type': 'application/json',
+                    'X-CSRFToken': csrftoken,
+                },
+                body: JSON.stringify({'username': username})
+            }).then((data) => {
+                //setUserList(data)
+                setUserList(["USER 1","USER 2"])
+            })
+        }
+        //setUserList(["USER 1","USER 2"])
+        getAllUsers(username)
       })
 
     return (

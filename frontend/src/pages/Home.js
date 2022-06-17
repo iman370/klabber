@@ -29,20 +29,20 @@ function Home(props) {
         </div>
 
         <div id="content">
-            <h1>Welcome {first_name}!</h1>
-            <Card style={{ width: '18rem' }} className="profileCard">
-                <Card.Body>
-                    <Card.Title>{first_name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">@{username}</Card.Subtitle>
-                    <Card.Text>Hellooooo</Card.Text>
-                    <Card.Link onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</Card.Link>
-                </Card.Body>
-            </Card>
-            <div className='divider' />
-            <button onClick={() => navigate('../friends',{state:{username,first_name,email}})}>Friends</button>
-            <div className='divider' />
-
-
+            <div id="mainbox1">
+                <h1>Welcome {first_name}!</h1>
+                <Card style={{ width: '18rem' }} className="profileCard">
+                    <Card.Body>
+                        <Card.Title>{first_name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">@{username}</Card.Subtitle>
+                        <Card.Text>Hellooooo</Card.Text>
+                        <Card.Link onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</Card.Link>
+                    </Card.Body>
+                </Card>
+                <div className='divider' />
+                <button onClick={() => navigate('../friends',{state:{username,first_name,email}})}>Friends</button>
+                <div className='divider' />
+            </div>
         </div>
         <Footer />
         </>  
