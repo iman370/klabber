@@ -76,10 +76,11 @@ function Friends(props) {
 
         <div id="content">
             <h1>Other Users</h1>
-                <div id="users-wrapper"> 
+                <div id="users-container"> 
                     {userList.map(function(user, index){
                         return(
-                            <OtherUserCard user={user}/>
+                            <><OtherUserCard user={user} />
+                            <div className='divider' /></>
                         )
                     })}
                 </div>
