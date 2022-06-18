@@ -4,7 +4,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import OtherUser from './components/OtherUser';
+import OtherUserCard from './components/OtherUserCard';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
@@ -76,17 +76,10 @@ function Friends(props) {
 
         <div id="content">
             <h1>Other Users</h1>
-                <div id="users-container"> 
+                <div id="users-wrapper"> 
                     {userList.map(function(user, index){
                         return(
-                            <div key={index} className="users-wrapper">
-                                <span>
-                                    <Card className={"user-card"}>
-                                        {user}
-                                    </Card>
-                                    <div className = "divider" />
-                                </span>
-                            </div>
+                            <OtherUserCard user={user}/>
                         )
                     })}
                 </div>
