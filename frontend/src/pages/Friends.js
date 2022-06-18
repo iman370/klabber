@@ -1,5 +1,10 @@
 import React, {useEffect, useState, useRef} from 'react'
-import Card from 'react-bootstrap/Card';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import OtherUser from './components/OtherUser';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
@@ -49,7 +54,7 @@ function Friends(props) {
                 return res.json()
             }
         }).then((data) => {
-            setUserList([data])
+            setUserList(data)
         }, [userList])
         return () => mounted = false;
       }, [])
@@ -71,10 +76,10 @@ function Friends(props) {
 
         <div id="content">
             <h1>Other Users</h1>
-                <div id="users-wrapper"> 
+                <div id="users-container"> 
                     {userList.map(function(user, index){
                         return(
-                            <div key={index} className="flex-wrapper">
+                            <div key={index} className="users-wrapper">
                                 <span>
                                     <Card className={"user-card"}>
                                         {user}
@@ -86,8 +91,7 @@ function Friends(props) {
                     })}
                 </div>
             <div className='divider' />
-
-            </div>
+        </div>
         <Footer />
         </>  
     )

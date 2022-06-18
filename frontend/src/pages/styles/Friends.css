@@ -3,14 +3,29 @@
     margin: 0 auto;
   }
 
+.users-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+ }
+
 .user-card {
     border: none;
+    border-radius: 10px;
     background: #751919;
     display: block;
     color: azure;
     text-align: center;
     font-size: 24px;
     line-height: 60px;
+    width: 100px;
 
 }
   
+.flex-wrapper {
+    position: relative;
+}
