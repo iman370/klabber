@@ -35,7 +35,7 @@ function Friends(props) {
         return cookieValue;
     }
 
-    // Gets all users except the current user
+    // Gets all users
     useEffect(() => {
         let mounted = true;
         fetch('http://127.0.0.1:8000/api/get-all-users/', {
@@ -71,12 +71,12 @@ function Friends(props) {
 
         <div id="content">
             <h1>Other Users</h1>
-                <div id="post-wrapper"> 
+                <div id="users-wrapper"> 
                     {userList.map(function(user, index){
                         return(
-                            <div key={index} className="post-wrapper flex-wrapper">
+                            <div key={index} className="flex-wrapper">
                                 <span>
-                                    <Card className={"test"}>
+                                    <Card className={"user-card"}>
                                         {user}
                                     </Card>
                                     <div className = "divider" />
