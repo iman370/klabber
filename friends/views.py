@@ -20,17 +20,29 @@ def checkFriend(request):
     receiverID = receiver.id
 
     #If the 2 users are already friends
-    if Friend.objects.filter(id1=senderID, id2=receiverID).exists() or Friend.objects.filter(id1=receiverID, id2=senderID).exists():
-        return Response(None, status=status.HTTP_200_OK)
+    #Remove them as friends
+    if Friend.objects.filter(id1=senderID, id2=receiverID).exists():
+        Friend.objects.filter(id1=senderID, id2=receiverID).delete()
+        return Response("Removed-Friend", status=status.HTTP_200_OK)
+
+    if Friend.objects.filter(id1=receiverID, id2=senderID).exists():
+        Friend.objects.filter(id1=receiverID, id2=senderID).delete()
+        return Response("Removed-Friend", status=status.HTTP_200_OK)
 
     #If the reciever has already sent a friend request
     #Then add them both as friends
-    if FriendRequest.objects.filter(senderId=receiverID, receiverId=senderID):
+    if FriendRequest.objects.filter(senderId=receiverID, receiverId=senderID).exists:
         serializer = FriendSerializer(data={'id1': senderID, 'id2': receiverID})
         if serializer.is_valid():
             serializer.save()
             FriendRequest.objects.filter(senderId=receiverID, receiverId=senderID).delete()
             return Response("Added-Friend", status=status.HTTP_200_OK)
+
+    #If the sender has already sent a friend request
+    #Cancel the friend request
+    if FriendRequest.objects.filter(senderId=senderID, receiverId=receiverID).exists():
+        FriendRequest.objects.filter(senderId=senderID, receiverId=receiverID).delete()
+        return Response("Request-cancelled", status=status.HTTP_200_OK)
 
     #Send friend request
     serializer = FriendRequestSerializer(data={'senderId':senderID, 'receiverId':receiverID})    

@@ -13,7 +13,7 @@ function OtherUserCard({user, myUser}) {
   const [username, setUsername] = useState(user[0]);
   const [nickname, setNickname] = useState(user[1]);
 
-  const [friendButton, setFriendButtom] = useState("Add Friend");
+  const [friendButton, setFriendButton] = useState("Add Friend");
 
   const getCookie = (name) => {
     var cookieValue = null;
