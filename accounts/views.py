@@ -110,6 +110,9 @@ def update_firstName(request):
     username = data['username']
     first_name = data['first_name']
 
+    if (first_name == ''):
+        return Response('empty-field', status.HTTP_400_BAD_REQUEST)
+
     try:
         user = User.objects.get(username=username)
         password = user.password
