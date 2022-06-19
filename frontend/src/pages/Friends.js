@@ -55,7 +55,6 @@ function Friends(props) {
             }
         }).then((data) => {
             setUserList(data)
-            console.log(data)
         }, [userList])
         return () => mounted = false;
       }, [])
@@ -66,8 +65,11 @@ function Friends(props) {
             <h1>Find Users</h1>
                 <div id="users-container"> 
                     {userList.map(function(user, index){
+                        if (user[0] == username) {
+                            return(null)
+                        }
                         return(
-                            <OtherUserCard user={user} />
+                            <OtherUserCard user={user} myUser={username} />
                         )
                     })}
                 </div>

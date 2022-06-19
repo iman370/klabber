@@ -6,12 +6,50 @@ import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
-function OtherUserCard({user}) {
+function OtherUserCard({user, myUser}) {
   const [username, setUsername] = useState(user[0]);
   const [nickname, setNickname] = useState(user[1]);
+
+  const [friendButton, setFriendButtom] = useState("Add Friend");
+
+  const getCookie = (name) => {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+const sendFriendReq = (myuser, username) => {
+  var url = 'http://127.0.0.1:8000/api/friend/'
+  var csrftoken = getCookie('csrftoken')
+  fetch(url, {
+      method: 'POST',
+      headers: {
+          'Content-type': 'application/json',
+          'X-CSRFToken': csrftoken,
+      },
+      body: JSON.stringify({'sender':myuser, 'reciever': username})
+  }).then((res) => {
+      console.log(res)
+      if (res.ok) {
+          return res.json()
+      }
+      else {
+      }
+  })
+}
 
   return (
     <Card sx={{
@@ -20,19 +58,21 @@ function OtherUserCard({user}) {
       ":hover":{
         transform: "scale3d(1.15, 1.15, 1)"
       },
+      display: 'flex',
       }}>
       <CardHeader
         sx={{
           color:'azure',
         }}
+        avatar={
+          <Avatar sx={{ bgcolor: 'black' }} aria-label="user">
+            K
+          </Avatar>
+        }
         title={nickname}
         subheader={"@"+username}
       />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
-          Testinggg
-        </Typography>
-      </CardContent>
+      <Button onClick={() => {sendFriendReq(myUser, username)}}>{friendButton}</Button>
     </Card>
   );
 }
