@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/Landing.css';
+import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Landing(props) {
@@ -24,7 +24,7 @@ function Landing(props) {
             </div>
         </div>
 
-        <div id='content'>
+        <div id='landing-content'>
             <div id='mainbox1'>
                 <h2>welcome to klabber</h2>
                 <button onClick={() => navigate('../sign-in')}>Sign In</button>

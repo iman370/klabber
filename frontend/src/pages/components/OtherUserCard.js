@@ -72,7 +72,12 @@ const sendFriendReq = (myuser, username) => {
         title={nickname}
         subheader={"@"+username}
       />
-      <Button onClick={() => {sendFriendReq(myUser, username)}}>{friendButton}</Button>
+      <Button sx={{
+        display: 'inline',
+        alignSelf: 'center',
+        borderRadius: '20px',
+        bgcolor: '#000000',
+      }} onClick={() => {sendFriendReq(myUser, username)}}>{friendButton}</Button>
     </Card>
   );
 }

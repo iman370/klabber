@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/Settings.css';
+import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Settings(props) {
@@ -97,7 +97,7 @@ function Settings(props) {
             </div>
         </div>
 
-        <div id="content">
+        <div id="settings-content">
             <div id='mainbox1'>
                 <h1>Username: {username}</h1>
                 <div className = "divider" />

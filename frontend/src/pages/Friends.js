@@ -3,12 +3,13 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
 import Typography from '@mui/material/Typography';
 import OtherUserCard from './components/OtherUserCard';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/Friends.css';
+import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Friends(props) {
@@ -61,8 +62,11 @@ function Friends(props) {
 
     return (
         <>
-        <div id="content">
-            <h1>Find Users</h1>
+        <div id="friends-content">
+            <ButtonGroup variant="text" aria-label="text button group">
+                <Button>Friends</Button>
+                <Button>Find Friends</Button>
+            </ButtonGroup>
                 <div id="users-container"> 
                     {userList.map(function(user, index){
                         if (user[0] == username) {

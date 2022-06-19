@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/SignIn.css';
+import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function SignIn(props) {
@@ -76,7 +76,7 @@ function SignIn(props) {
             </div>
         </div>
 
-        <div id="content">
+        <div id="signin-content">
             <div id='mainbox1'>
                 <h2>Already have an account?</h2>
                 <h1>Sign in.</h1>

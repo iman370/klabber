@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/Home.css';
+import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Home(props) {
@@ -28,7 +28,7 @@ function Home(props) {
             </div>
         </div>
 
-        <div id="content">
+        <div id="home-content">
             <div id="mainbox1">
                 <h1>Welcome {first_name}!</h1>
                 <Card style={{ width: '18rem' }} className="profileCard">
