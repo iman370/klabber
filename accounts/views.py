@@ -129,7 +129,10 @@ def update_firstName(request):
 def get_all_users(request):
     User = get_user_model()
     users = User.objects.all()
-    usernames = []
+    allUsers = []
     for user in users:
-        usernames.append(user.username)
-    return Response(usernames, status=status.HTTP_200_OK)
+        thisUser = []
+        thisUser.append(user.username)
+        thisUser.append(user.first_name)
+        allUsers.append(thisUser)
+    return Response(allUsers, status=status.HTTP_200_OK)

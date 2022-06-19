@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,6 +11,8 @@ import { styled } from '@mui/material/styles';
 
 
 function OtherUserCard({user}) {
+  const [username, setUsername] = useState(user[0]);
+  const [nickname, setNickname] = useState(user[1]);
 
   return (
     <Card sx={{
@@ -18,8 +20,8 @@ function OtherUserCard({user}) {
       bgcolor: '#751919'
       }}>
       <CardHeader
-        title={user}
-        subheader={user}
+        title={nickname}
+        subheader={username}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
