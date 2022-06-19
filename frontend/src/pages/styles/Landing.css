@@ -73,7 +73,7 @@
 
 /*MAIN CONTENTS*/
 #content {
-    display: block;
+    display: flex;
 }
 
 #content #mainbox1 {
@@ -93,7 +93,7 @@
     display: block;
     width: 100%;
     cursor: pointer;
-  }
+}
 
 .divider {
     height: 30px;

@@ -62,26 +62,12 @@ function Friends(props) {
 
     return (
         <>
-        <div className='navbar'>
-            <div className='navbar_logo'>
-                <img className='klabber-logo' src={klabberLogo} onClick={() => navigate('../home',{state:{username,first_name,email}})}/>
-            </div>
-            <div className='navbar_links'>
-                <button onClick={() => navigate('../my-profile',{state:{username,first_name,email}})}>My Profile</button>
-                <p>Privacy</p>
-                <p>Terms</p>
-                <p>Contact</p>
-                <p>What is klabber?</p>
-            </div>
-        </div>
-
         <div id="content">
-            <h1>Other Users</h1>
+            <h1>Find Users</h1>
                 <div id="users-container"> 
                     {userList.map(function(user, index){
                         return(
-                            <><OtherUserCard user={user} />
-                            <div className='divider' /></>
+                            <OtherUserCard user={user} />
                         )
                     })}
                 </div>

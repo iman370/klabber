@@ -1,3 +1,26 @@
+#content {
+    display: flex;
+}
+
+#content #mainbox1 {
+    width: 90%;
+    display: flex;
+    margin: 130px auto;
+}
+
+#content button {
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #fff;
+    text-align: center;
+    background-color: #751919;
+    border-radius: 12px;
+    display: block;
+    width: 48px;
+    cursor: pointer;
+}
+
 .profileCard {
     background: #751919;
     display: block;

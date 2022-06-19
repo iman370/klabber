@@ -9,7 +9,6 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 
-
 function OtherUserCard({user}) {
   const [username, setUsername] = useState(user[0]);
   const [nickname, setNickname] = useState(user[1]);
@@ -17,11 +16,17 @@ function OtherUserCard({user}) {
   return (
     <Card sx={{
       width: 345,
-      bgcolor: '#751919'
+      bgcolor: '#751919',
+      ":hover":{
+        transform: "scale3d(1.15, 1.15, 1)"
+      },
       }}>
       <CardHeader
+        sx={{
+          color:'azure',
+        }}
         title={nickname}
-        subheader={username}
+        subheader={"@"+username}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
