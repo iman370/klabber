@@ -77,6 +77,7 @@ const sendFriendReq = (myuser, username) => {
         alignSelf: 'center',
         borderRadius: '20px',
         bgcolor: '#000000',
+        color: 'azure',
       }} onClick={() => {sendFriendReq(myUser, username)}}>{friendButton}</Button>
     </Card>
   );

@@ -63,10 +63,14 @@ function Friends(props) {
     return (
         <>
         <div id="friends-content">
-            <ButtonGroup variant="text" aria-label="text button group">
-                <Button>Friends</Button>
-                <Button>Find Friends</Button>
-            </ButtonGroup>
+            <div className="divider"/>
+            <div id="buttonsbox">
+                <ButtonGroup variant="text" aria-label="text button group" color='inherit'>
+                    <Button>Friends</Button>
+                    <Button>Find Friends</Button>
+                </ButtonGroup>
+            </div>
+            <div className="divider"/>
                 <div id="users-container"> 
                     {userList.map(function(user, index){
                         if (user[0] == username) {
