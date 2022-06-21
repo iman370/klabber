@@ -44,6 +44,11 @@ function Friends(props) {
     // Gets all users
     useEffect(() => {
         let mounted = true;
+        getAllUsers()
+        return () => mounted = false;
+      }, [])
+
+    const getAllUsers = () => {
         fetch('http://127.0.0.1:8000/api/get-all-users/', {
             method: 'GET',
             headers: {
@@ -57,8 +62,7 @@ function Friends(props) {
         }).then((data) => {
             setUserList(data)
         }, [userList])
-        return () => mounted = false;
-      }, [])
+    }
 
     return (
         <>
