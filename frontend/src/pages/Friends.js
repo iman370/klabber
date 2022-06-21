@@ -45,6 +45,7 @@ function Friends(props) {
     useEffect(() => {
         let mounted = true;
         getAllUsers()
+        getAllFriends()
         return () => mounted = false;
       }, [])
 
@@ -62,6 +63,22 @@ function Friends(props) {
         }).then((data) => {
             setUserList(data)
         }, [userList])
+    }
+
+    const getAllFriends = () => {
+        fetch('http://127.0.0.1:8000/api/get-all-friends/', {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify()
+        }).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then((data) => {
+            setFriendList(data)
+        }, [friendList])
     }
 
     return (
