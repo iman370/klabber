@@ -2,9 +2,9 @@ import React, {useEffect, useState, useRef} from 'react'
 import Card from 'react-bootstrap/Card'
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import Footer from './Footer';
 import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
@@ -30,20 +30,36 @@ function Home(props) {
             <div className='divider' />
             <Box id="notificationsBox">
                 <Stack spacing={2}>
+                    <h1>Notifications</h1>
                     <h1>Notification 1</h1>
                     <h1>Notification 2</h1>
-                    <h1>Notification 3</h1>
                 </Stack>
-                </Box>
+            </Box>
             <div className='divider' />
-            <Card id="friendsCard">
+            <Card id="friendsCard" onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
                 <Card.Body>
                     <Card.Title>Friends</Card.Title>
                 </Card.Body>
             </Card>
             <div className='divider' />
+            <TextField
+                id="statusBox"
+                label="Your status"
+                multiline
+                rows={4}
+                placeholder="Say something!"
+                focused
+            />
+            <div className='divider' />
+            <Box id="klabsBox">
+                <Stack spacing={2}>
+                    <h1>klabs</h1>
+                    <h1>klab 1</h1>
+                    <h1>klab 2</h1>
+                </Stack>
+            </Box>
+            <div className='divider' />
             
-            <button onClick={() => navigate('../friends',{state:{username,first_name,email}})}>Friends</button>
             <div className='divider' />
         </div>
     </div>

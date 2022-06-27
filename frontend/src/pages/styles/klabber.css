@@ -268,31 +268,22 @@
 }
 
 #home-content #statusBox {
-    background: #751919;
-    display: block;
+    width: 18rem;
     color: azure;
-    border-radius: 20px;
-    padding: 15px;
 }
 
 #home-content #klabsBox {
     background: #751919;
+    width: 18rem;
     display: block;
     color: azure;
     border-radius: 20px;
     padding: 15px;
 }
 
-#home-content #createEventsButton {
+#home-content .eventsButton {
     background: #751919;
-    display: block;
-    color: azure;
-    border-radius: 20px;
-    padding: 15px;
-}
-
-#home-content #findEventButton {
-    background: #751919;
+    width: 8rem;
     display: block;
     color: azure;
     border-radius: 20px;
@@ -301,6 +292,7 @@
 
 #home-content #upcomingEventsBox {
     background: #751919;
+    width: 18rem;
     display: block;
     color: azure;
     border-radius: 20px;
@@ -309,6 +301,7 @@
 
 #home-content #pastEventsBox {
     background: #751919;
+    width: 18rem;
     display: block;
     color: azure;
     border-radius: 20px;
