@@ -88,6 +88,10 @@
     height: 10px;
 }
 
+.divider_small2 {
+    height: 2rem;
+}
+
 /* LANDING PAGE */
 
 #landing-content {
@@ -220,14 +224,25 @@
 }
 
 #home-content #mainbox1 {
-    display: block;
-    max-width: 1170px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 4rem auto;
     justify-items: center;
     align-items: center;
 }
 
-#home-content #mainbox1 button {
+#home-content #column1 {
+    display: block;
+}
+
+#home-content #column2 {
+    display: block;
+}
+#home-content #column3 {
+    display: block;
+}
+
+#home-content #mainbox1 button { /* no longer needed? */
     border: none;
     font-size: 24px;
     line-height: 72px;
@@ -245,7 +260,7 @@
     width: 18rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
 }
 
@@ -254,7 +269,7 @@
     width: 18rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
 }
 
@@ -263,8 +278,9 @@
     width: 18rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
+    cursor: pointer;
 }
 
 #home-content #statusBox {
@@ -277,16 +293,22 @@
     width: 18rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
 }
 
-#home-content .eventsButton {
+#home-content #eventsButtonBox {
+    width: 18rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#home-content #eventsButtonBox Button {
     background: #751919;
     width: 8rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
 }
 
@@ -295,7 +317,7 @@
     width: 18rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
 }
 
@@ -304,7 +326,7 @@
     width: 18rem;
     display: block;
     color: azure;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 15px;
 }
 

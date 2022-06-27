@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './styles/klabber.css';
@@ -18,48 +19,63 @@ function Home(props) {
     return (
     <div id="home-content">
         <div id="mainbox1">
-            <h1>Welcome {first_name}!</h1>
-            <Card id="profileCard">
-                <Card.Body>
-                    <Card.Title>{first_name}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">@{username}</Card.Subtitle>
-                    <Card.Text>Hellooooo</Card.Text>
-                    <Card.Link onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</Card.Link>
-                </Card.Body>
-            </Card>
-            <div className='divider' />
-            <Box id="notificationsBox">
-                <Stack spacing={2}>
-                    <h1>Notifications</h1>
-                    <h1>Notification 1</h1>
-                    <h1>Notification 2</h1>
-                </Stack>
-            </Box>
-            <div className='divider' />
-            <Card id="friendsCard" onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
-                <Card.Body>
-                    <Card.Title>Friends</Card.Title>
-                </Card.Body>
-            </Card>
-            <div className='divider' />
-            <TextField
-                id="statusBox"
-                label="Your status"
-                multiline
-                rows={4}
-                placeholder="Say something!"
-                focused
-            />
-            <div className='divider' />
-            <Box id="klabsBox">
-                <Stack spacing={2}>
-                    <h1>klabs</h1>
-                    <h1>klab 1</h1>
-                    <h1>klab 2</h1>
-                </Stack>
-            </Box>
-            <div className='divider' />
-            
+            <div id="column1">
+                <Card id="profileCard">
+                    <Card.Body>
+                        <Card.Title>{first_name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">@{username}</Card.Subtitle>
+                        <Card.Text>Hellooooo</Card.Text>
+                        <Card.Link onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</Card.Link>
+                    </Card.Body>
+                </Card>
+                <div className='divider' />
+                <Box id="notificationsBox">
+                    <Stack spacing={2}>
+                        <h1>Notifications</h1>
+                        <h1>Notification 1</h1>
+                        <h1>Notification 2</h1>
+                    </Stack>
+                </Box>
+                <div className='divider' />
+                <Card id="friendsCard" onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
+                    <Card.Body>
+                        <Card.Title>Friends</Card.Title>
+                    </Card.Body>
+                </Card>
+            </div>
+            <div id="column2">
+                <TextField
+                    id="statusBox"
+                    label="Your status"
+                    multiline
+                    rows={4}
+                    placeholder="Say something!"
+                    focused
+                />
+                <div className='divider' />
+                <Box id="klabsBox">
+                    <Stack spacing={2}>
+                        <h1>klabs</h1>
+                        <h1>klab 1</h1>
+                        <h1>klab 2</h1>
+                    </Stack>
+                </Box>
+            </div>
+            <div id="column3">
+                <div id="eventsButtonBox">
+                    <Button>Create Event</Button>
+                    <Button>Find Event</Button>
+                </div>
+                <div className='divider'/>
+                <Box id="upcomingEventsBox">
+                    <h1>Upcoming Events</h1>
+                </Box>
+                <div className='divider'/>
+                <Box id="pastEventsBox">
+                    <h1>Past Events</h1>
+                </Box>
+            </div>
+
             <div className='divider' />
         </div>
     </div>
