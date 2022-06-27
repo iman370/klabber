@@ -240,7 +240,74 @@
     cursor: pointer;
 }
 
-#home-content .profileCard {
+#home-content #profileCard {
+    background: #751919;
+    width: 18rem;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #notificationsBox {
+    background: #751919;
+    width: 18rem;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #friendsCard {
+    background: #751919;
+    width: 18rem;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #statusBox {
+    background: #751919;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #klabsBox {
+    background: #751919;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #createEventsButton {
+    background: #751919;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #findEventButton {
+    background: #751919;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #upcomingEventsBox {
+    background: #751919;
+    display: block;
+    color: azure;
+    border-radius: 20px;
+    padding: 15px;
+}
+
+#home-content #pastEventsBox {
     background: #751919;
     display: block;
     color: azure;
