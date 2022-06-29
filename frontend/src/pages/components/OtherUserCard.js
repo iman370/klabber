@@ -7,7 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
+import '../styles/klabber.css';
 
 function OtherUserCard({user, myUser}) {
   const [username, setUsername] = useState(user[0]);

@@ -221,13 +221,15 @@
 
 #home-content {
     display: block;
+    margin: 4rem auto;
+    justify-content: center;
 }
 
 #home-content #mainbox1 {
     display: grid;
     grid-template-columns: auto auto auto;
-    margin: 4rem auto;
-    justify-items: center;
+    grid-column-gap: 20px;
+    justify-content: center;
     align-items: center;
 }
 
@@ -238,6 +240,7 @@
 #home-content #column2 {
     display: block;
 }
+
 #home-content #column3 {
     display: block;
 }
@@ -258,7 +261,7 @@
 #home-content #profileCard {
     background: #751919;
     width: 18rem;
-    display: block;
+    display: flex;
     color: azure;
     border-radius: 10px;
     padding: 15px;

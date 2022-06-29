@@ -4,9 +4,11 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './styles/klabber.css';
+import MyProfileCard from './components/MyProfileCard.js';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Home(props) {
@@ -20,14 +22,7 @@ function Home(props) {
     <div id="home-content">
         <div id="mainbox1">
             <div id="column1">
-                <Card id="profileCard">
-                    <Card.Body>
-                        <Card.Title>{first_name}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">@{username}</Card.Subtitle>
-                        <Card.Text>Hellooooo</Card.Text>
-                        <Card.Link onClick={() => navigate('../settings',{state:{username,first_name,email}})}>Settings</Card.Link>
-                    </Card.Body>
-                </Card>
+                <MyProfileCard nickname={first_name} username={username} />
                 <div className='divider' />
                 <Box id="notificationsBox">
                     <Stack spacing={2}>
@@ -40,6 +35,11 @@ function Home(props) {
                 <Card id="friendsCard" onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
                     <Card.Body>
                         <Card.Title>Friends</Card.Title>
+                        <Card.Body>
+                            <Avatar sx={{ bgcolor: 'black' }} aria-label="user">
+                                K
+                            </Avatar>
+                        </Card.Body>
                     </Card.Body>
                 </Card>
             </div>
