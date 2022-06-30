@@ -22,15 +22,9 @@ function Friends(props) {
     //All users
     const [userList, setUserList] = useState(['There are no other users.'])
 
-    //Friends
-    const [friendList, setFriendList] = useState(['You have no friends.'])
-
-    //This list will be displayed
-    const [showList, setShowList] = useState([''])
-
     // true = show friends
     // false = show all users
-    const [showFriends, setShowFriends] = useState(false);
+    const [showFriends, setShowFriends] = useState(true); // KEEP TRUE
 
     const getCookie = (name) => {
         var cookieValue = null;
@@ -53,10 +47,8 @@ function Friends(props) {
         let mounted = true;
         if (showFriends) {
             getAllFriends()
-            setShowList(friendList)
         } else {
             getAllUsers()
-            setShowList(userList)
         }
         return () => mounted = false;
       }, [showFriends])
@@ -89,8 +81,8 @@ function Friends(props) {
                 return res.json()
             }
         }).then((data) => {
-            setFriendList(data)
-        }, [friendList])
+            setUserList(data)
+        }, [userList])
     }
 
     return (
@@ -105,7 +97,7 @@ function Friends(props) {
             </div>
             <div className="divider"/>
                 <div id="users-container"> 
-                    {showList.map(function(user, index){
+                    {userList.map(function(user, index){
                         if (user[0] == username) {
                             return(null)
                         }
