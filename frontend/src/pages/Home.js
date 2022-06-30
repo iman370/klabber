@@ -22,7 +22,7 @@ function Home(props) {
     <div id="home-content">
         <div id="mainbox1">
             <div id="column1">
-                <MyProfileCard nickname={first_name} username={username} />
+                <MyProfileCard nickname={first_name} username={username} email={email} />
                 <div className='divider' />
                 <Box id="notificationsBox">
                     <Stack spacing={2}>

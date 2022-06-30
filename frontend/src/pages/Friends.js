@@ -25,6 +25,13 @@ function Friends(props) {
     //Friends
     const [friendList, setFriendList] = useState(['You have no friends.'])
 
+    //This list will be displayed
+    const [showList, setShowList] = useState([''])
+
+    // true = show friends
+    // false = show all users
+    const [showFriends, setShowFriends] = useState(false);
+
     const getCookie = (name) => {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -41,13 +48,18 @@ function Friends(props) {
         return cookieValue;
     }
 
-    // Gets all users
+    // When the user presses the "friends" or "find friends" buttons
     useEffect(() => {
         let mounted = true;
-        getAllUsers()
-        getAllFriends()
+        if (showFriends) {
+            getAllFriends()
+            setShowList(friendList)
+        } else {
+            getAllUsers()
+            setShowList(userList)
+        }
         return () => mounted = false;
-      }, [])
+      }, [showFriends])
 
     const getAllUsers = () => {
         fetch('http://127.0.0.1:8000/api/get-all-users/', {
@@ -87,13 +99,13 @@ function Friends(props) {
             <div className="divider"/>
             <div id="buttonsbox">
                 <ButtonGroup variant="text" aria-label="text button group" color='inherit'>
-                    <Button>Friends</Button>
-                    <Button>Find Friends</Button>
+                    <Button onClick={() => setShowFriends(true)}>Friends</Button>
+                    <Button onClick={() => setShowFriends(false)}>Find Friends</Button>
                 </ButtonGroup>
             </div>
             <div className="divider"/>
                 <div id="users-container"> 
-                    {userList.map(function(user, index){
+                    {showList.map(function(user, index){
                         if (user[0] == username) {
                             return(null)
                         }
