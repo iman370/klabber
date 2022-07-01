@@ -135,4 +135,4 @@ def get_all_users(request):
     allUsers = []
     for user in users:
         allUsers.append([user.username, user.first_name])
-    return Response(allUsers, status=status.HTTP_200_OK)
+    return Response(sorted(allUsers), status=status.HTTP_200_OK)

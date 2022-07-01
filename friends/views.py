@@ -43,7 +43,7 @@ def get_other_users(request):
         #If the 2 users are not friends at all
         allUsers.append([user.username, user.first_name, 0])
 
-    return Response(allUsers, status=status.HTTP_200_OK)
+    return Response(sorted(allUsers), status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def get_all_friends(request):
@@ -62,7 +62,7 @@ def get_all_friends(request):
         myFriendNickname = User.objects.get(username=friend.id1).first_name
         myFriends.append([myFriendUsername, myFriendNickname, 1])
     
-    return Response(myFriends, status=status.HTTP_200_OK)
+    return Response(sorted(myFriends), status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 def get_incoming_requests(request):
@@ -74,7 +74,7 @@ def get_incoming_requests(request):
         thisUser = User.objects.get(username=user.senderId)
         users.append([thisUser.username, thisUser.first_name, 2])
 
-    return Response(users, status=status.HTTP_200_OK)
+    return Response(sorted(users), status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
