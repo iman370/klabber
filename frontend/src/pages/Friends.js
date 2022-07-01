@@ -65,7 +65,11 @@ function Friends(props) {
                 return res.json()
             }
         }).then((data) => {
-            setUserList(data)
+            if (data.length === 0) {
+                setUserList(['There are no other users.'])
+            } else {
+                setUserList(data)
+            }
         }, [userList])
     }
 
@@ -82,7 +86,11 @@ function Friends(props) {
                 return res.json()
             }
         }).then((data) => {
-            setUserList(data)
+            if (data.length === 0) {
+                setUserList(['You have no friends.'])
+            } else {
+                setUserList(data)
+            }
         }, [userList])
     }
 
@@ -98,7 +106,17 @@ function Friends(props) {
             </div>
             <div className="divider"/>
                 <div id="users-container"> 
-                    {userList.map(function(user, index){
+                    {userList.map(function(user){
+                        if (user == 'There are no other users.') {
+                            return(
+                                <h1>There are no other users.</h1>
+                            )
+                        }
+                        if (user == 'You have no friends.') {
+                            return(
+                                <h1>You have no friends.</h1>
+                            )
+                        }
                         return(
                             <OtherUserCard user={user} myUser={username} />
                         )
