@@ -1,3 +1,4 @@
+from django.dispatch import receiver
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
@@ -63,6 +64,19 @@ def get_all_friends(request):
     
     return Response(myFriends, status=status.HTTP_200_OK)
 
+@api_view(['GET'])
+def get_incoming_requests(request):
+    username = request.GET.get('username','')
+    myId = User.objects.get(username=username).id
+    requests = FriendRequest.objects.filter(receiverId=myId)
+    users = []
+    for user in requests:
+        thisUser = User.objects.get(username=user.senderId)
+        users.append([thisUser.username, thisUser.first_name, 2])
+
+    return Response(users, status=status.HTTP_200_OK)
+
+
 @api_view(['POST'])
 def checkFriend(request):
     data = request.data
@@ -106,5 +120,3 @@ def checkFriend(request):
         return Response(3, status=status.HTTP_200_OK)
 
     return Response(None, status=status.HTTP_400_BAD_REQUEST)
-
-    

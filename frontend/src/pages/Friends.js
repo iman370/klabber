@@ -12,19 +12,23 @@ function Friends(props) {
     //All users
     const [userList, setUserList] = useState(['There are no other users.'])
 
-    // true = show friends
-    // false = show all users
-    const [showFriends, setShowFriends] = useState(true);
+    // 0 = show friends
+    // 1 = show all users
+    // 2 = show incoming requests
+    const [showFriends, setShowFriends] = useState(0);
 
     // When the user presses the "friends" or "find friends" buttons
     useEffect(() => {
         let mounted = true;
-        if (showFriends) {
+        if (showFriends === 0) {
             setUserList([])
             getAllFriends()
-        } else {
+        } else if (showFriends === 1) {
             setUserList([])
             getAllUsers()
+        } else if (showFriends === 2) {
+            setUserList([])
+            getIncomingRequests()
         }
         return () => mounted = false;
       }, [showFriends])
@@ -46,7 +50,6 @@ function Friends(props) {
             } else {
                 setUserList(data)
             }
-            console.log(userList) //////
         }, [userList])
     }
 
@@ -68,7 +71,26 @@ function Friends(props) {
             } else {
                 setUserList(data)
             }
-            console.log(userList) //////
+        }, [userList])
+    }
+
+    const getIncomingRequests = () => {
+        fetch('http://127.0.0.1:8000/api/get-incoming-requests?username='+username, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify()
+        }).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then((data) => {
+            if (data.length === 0) {
+                setUserList(['You have no incoming friend requests.'])
+            } else {
+                setUserList(data)
+            }
         }, [userList])
     }
 
@@ -77,8 +99,9 @@ function Friends(props) {
             <div className="divider"/>
             <div id="buttonsbox">
                 <ButtonGroup variant="text" aria-label="text button group" color='inherit'>
-                    <Button onClick={() => setShowFriends(true)}>Friends</Button>
-                    <Button onClick={() => setShowFriends(false)}>Find Friends</Button>
+                    <Button onClick={() => setShowFriends(0)}>Friends</Button>
+                    <Button onClick={() => setShowFriends(1)}>Find Users</Button>
+                    <Button onClick={() => setShowFriends(2)}>Requests</Button>
                 </ButtonGroup>
             </div>
             <div className="divider"/>
@@ -92,6 +115,11 @@ function Friends(props) {
                         if (user == 'You have no friends.') {
                             return(
                                 <h1>You have no friends.</h1>
+                            )
+                        }
+                        if (user == 'You have no incoming friend requests.') {
+                            return(
+                                <h1>You have no incoming friend requests.</h1>
                             )
                         }
                         console.log(user[0])
