@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './styles/klabber.css';
 import MyProfileCard from './components/MyProfileCard.js';
+import HomePageFriends from './components/HomePageFriends';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Home(props) {
@@ -32,16 +33,9 @@ function Home(props) {
                     </Stack>
                 </Box>
                 <div className='divider' />
-                <Card id="friendsCard" onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
-                    <Card.Body>
-                        <Card.Title>Friends</Card.Title>
-                        <Card.Body>
-                            <Avatar sx={{ bgcolor: 'black' }} aria-label="user">
-                                K
-                            </Avatar>
-                        </Card.Body>
-                    </Card.Body>
-                </Card>
+                <div onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
+                    <HomePageFriends username={username} />
+                </div>
             </div>
             <div id="column2">
                 <TextField

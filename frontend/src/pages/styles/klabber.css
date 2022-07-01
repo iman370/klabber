@@ -92,6 +92,10 @@
     height: 2rem;
 }
 
+.friends-card-divider {
+    width: 1rem;
+}
+
 /* LANDING PAGE */
 
 #landing-content {
@@ -230,7 +234,7 @@
     grid-template-columns: auto auto auto;
     grid-column-gap: 20px;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 #home-content #column1 {
