@@ -134,8 +134,5 @@ def get_all_users(request):
     users = User.objects.all()
     allUsers = []
     for user in users:
-        thisUser = []
-        thisUser.append(user.username)
-        thisUser.append(user.first_name)
-        allUsers.append(thisUser)
+        allUsers.append([user.username, user.first_name])
     return Response(allUsers, status=status.HTTP_200_OK)

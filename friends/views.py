@@ -10,16 +10,22 @@ from rest_framework.decorators import api_view
 
 @api_view(['GET'])
 def get_all_friends(request):
-    friends = Friend.objects.all()
-    allFriends = []
+    username = request.GET.get('username','')
+    myId = User.objects.get(username=username).id
+    myFriends = []
+    friends = Friend.objects.filter(id1=myId)
     for friend in friends:
-        username1 = User.objects.get(id=friend.id1.pk).username
-        nickname1 = User.objects.get(id=friend.id1.pk).first_name
-        username2 = User.objects.get(id=friend.id2.pk).username
-        nickname2 = User.objects.get(id=friend.id2.pk).first_name
-        allFriends.append([username1, nickname1, username2, nickname2])
-    print(allFriends)
-    return Response(allFriends, status=status.HTTP_200_OK)
+        myFriendUsername = User.objects.get(username=friend.id2).username
+        myFriendNickname = User.objects.get(username=friend.id2).first_name
+        myFriends.append([myFriendUsername, myFriendNickname])
+
+    friends = Friend.objects.filter(id2=myId)
+    for friend in friends:
+        myFriendUsername = User.objects.get(username=friend.id1).username
+        myFriendNickname = User.objects.get(username=friend.id1).first_name
+        myFriends.append([myFriendUsername, myFriendNickname])
+    
+    return Response(myFriends, status=status.HTTP_200_OK)
 
 @api_view(['POST'])
 def checkFriend(request):
