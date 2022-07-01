@@ -53,7 +53,7 @@ def get_all_friends(request):
     for friend in friends:
         myFriendUsername = User.objects.get(username=friend.id2).username
         myFriendNickname = User.objects.get(username=friend.id2).first_name
-        myFriends.append([myFriendUsername, myFriendNickname])
+        myFriends.append([myFriendUsername, myFriendNickname, 1])
 
     friends = Friend.objects.filter(id2=myId)
     for friend in friends:

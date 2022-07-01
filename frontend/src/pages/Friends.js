@@ -46,6 +46,7 @@ function Friends(props) {
             } else {
                 setUserList(data)
             }
+            console.log(userList) //////
         }, [userList])
     }
 
@@ -67,6 +68,7 @@ function Friends(props) {
             } else {
                 setUserList(data)
             }
+            console.log(userList) //////
         }, [userList])
     }
 
