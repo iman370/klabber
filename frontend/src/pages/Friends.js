@@ -54,7 +54,7 @@ function Friends(props) {
       }, [showFriends])
 
     const getAllUsers = () => {
-        fetch('http://127.0.0.1:8000/api/get-all-users/', {
+        fetch('http://127.0.0.1:8000/api/get-other-users?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -99,9 +99,6 @@ function Friends(props) {
             <div className="divider"/>
                 <div id="users-container"> 
                     {userList.map(function(user, index){
-                        if (user[0] == username) {
-                            return(null)
-                        }
                         return(
                             <OtherUserCard user={user} myUser={username} />
                         )

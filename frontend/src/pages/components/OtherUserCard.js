@@ -12,8 +12,23 @@ import '../styles/klabber.css';
 function OtherUserCard({user, myUser}) {
   const [username, setUsername] = useState(user[0]);
   const [nickname, setNickname] = useState(user[1]);
+  const [friendStatus, setFriendStatus] = useState(user[2]);
 
   const [friendButton, setFriendButton] = useState("Add Friend");
+
+  useEffect(() => {
+    let mounted = true;
+    if (friendStatus == 0) {
+      setFriendButton("Add Friend")
+    } else if (friendStatus == 1) {
+      setFriendButton("Friends")
+    } else if (friendStatus == 2) {
+      setFriendButton("Accept")
+    } else if (friendStatus == 3) {
+      setFriendButton("Requested")
+    }
+    return () => mounted = false;
+  }, [friendStatus])
 
   const getCookie = (name) => {
     var cookieValue = null;
@@ -46,9 +61,9 @@ const sendFriendReq = (myuser, username) => {
       if (res.ok) {
           return res.json()
       }
-      else {
-      }
-  })
+  }).then((data) => {
+    setFriendStatus(data)
+}, [friendStatus])
 }
 
   return (

@@ -8,6 +8,42 @@ from .serializers import FriendRequestSerializer
 
 from rest_framework.decorators import api_view
 
+#FRIEND CODES:
+# 0 - Not friends
+# 1 - Friends
+# 2 - Incoming request
+# 3 - Outgoing request
+
+@api_view(['GET'])
+def get_other_users(request):
+    myUsername = request.GET.get('username','')
+    myId = User.objects.get(username=myUsername).id
+
+    users = User.objects.exclude(username=myUsername)
+    allUsers = []
+    for user in users:
+        userId = user.id
+        
+        #If the 2 users are friends
+        if (Friend.objects.filter(id1=myId, id2=userId).exists() or Friend.objects.filter(id1=userId, id2=myId).exists()):
+            allUsers.append([user.username, user.first_name, 1])
+            continue
+
+        #If this user has sent a friend request to the user logged in
+        if (FriendRequest.objects.filter(senderId=userId, receiverId=myId).exists()):
+            allUsers.append([user.username, user.first_name, 2])
+            continue
+
+        #If the user logged in has sent a friend request to this user
+        if (FriendRequest.objects.filter(senderId=myId, receiverId=userId).exists()):
+            allUsers.append([user.username, user.first_name, 3])
+            continue
+
+        #If the 2 users are not friends at all
+        allUsers.append([user.username, user.first_name, 0])
+
+    return Response(allUsers, status=status.HTTP_200_OK)
+
 @api_view(['GET'])
 def get_all_friends(request):
     username = request.GET.get('username','')
@@ -23,7 +59,7 @@ def get_all_friends(request):
     for friend in friends:
         myFriendUsername = User.objects.get(username=friend.id1).username
         myFriendNickname = User.objects.get(username=friend.id1).first_name
-        myFriends.append([myFriendUsername, myFriendNickname])
+        myFriends.append([myFriendUsername, myFriendNickname, 1])
     
     return Response(myFriends, status=status.HTTP_200_OK)
 
@@ -42,11 +78,11 @@ def checkFriend(request):
     #Remove them as friends
     if Friend.objects.filter(id1=senderID, id2=receiverID).exists():
         Friend.objects.filter(id1=senderID, id2=receiverID).delete()
-        return Response("Removed-Friend", status=status.HTTP_200_OK)
+        return Response(0, status=status.HTTP_200_OK)
 
     if Friend.objects.filter(id1=receiverID, id2=senderID).exists():
         Friend.objects.filter(id1=receiverID, id2=senderID).delete()
-        return Response("Removed-Friend", status=status.HTTP_200_OK)
+        return Response(0, status=status.HTTP_200_OK)
 
     #If the reciever has already sent a friend request
     #Then add them both as friends
@@ -55,19 +91,19 @@ def checkFriend(request):
         if serializer.is_valid():
             serializer.save()
             FriendRequest.objects.filter(senderId=receiverID, receiverId=senderID).delete()
-            return Response("Added-Friend", status=status.HTTP_200_OK)
+            return Response(1, status=status.HTTP_200_OK)
 
     #If the sender has already sent a friend request
     #Cancel the friend request
     if FriendRequest.objects.filter(senderId=senderID, receiverId=receiverID).exists():
         FriendRequest.objects.filter(senderId=senderID, receiverId=receiverID).delete()
-        return Response("Request-cancelled", status=status.HTTP_200_OK)
+        return Response(0, status=status.HTTP_200_OK)
 
     #Send friend request
     serializer = FriendRequestSerializer(data={'senderId':senderID, 'receiverId':receiverID})
     if serializer.is_valid():
         serializer.save()
-        return Response("Sent-Request", status=status.HTTP_200_OK)
+        return Response(3, status=status.HTTP_200_OK)
 
     return Response(None, status=status.HTTP_400_BAD_REQUEST)
 
