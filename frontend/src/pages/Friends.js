@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react'
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import OtherUserCard from './components/OtherUserCard';
-import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import Footer from './Footer';
 import './styles/klabber.css';
 
 function Friends(props) {
@@ -22,8 +20,10 @@ function Friends(props) {
     useEffect(() => {
         let mounted = true;
         if (showFriends) {
+            setUserList([])
             getAllFriends()
         } else {
+            setUserList([])
             getAllUsers()
         }
         return () => mounted = false;
@@ -94,6 +94,7 @@ function Friends(props) {
                                 <h1>You have no friends.</h1>
                             )
                         }
+                        console.log(user[0])
                         return(
                             <OtherUserCard user={user} myUser={username} />
                         )
