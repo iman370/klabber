@@ -264,29 +264,26 @@
 
 #home-content #profileCard {
     background: #751919;
-    width: 18rem;
+    width: 20rem;
     display: flex;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
 }
 
 #home-content #notificationsBox {
     background: #751919;
-    width: 18rem;
+    width: 20rem;
     display: block;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
 }
 
 #home-content #friendsCard {
     background: #751919;
-    width: 18rem;
+    width: 20rem;
     display: block;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
     cursor: pointer;
 }
 
@@ -297,44 +294,44 @@
 
 #home-content #klabsBox {
     background: #751919;
-    width: 18rem;
+    width: 20rem;
     display: block;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
 }
 
 #home-content #eventsButtonBox {
-    width: 18rem;
-    display: flex;
-    justify-content: space-between;
+    width: 20rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    border-radius: 10px;
 }
 
 #home-content #eventsButtonBox Button {
     background: #751919;
-    width: 8rem;
     display: block;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
+    padding: 5px;
 }
 
 #home-content #upcomingEventsBox {
     background: #751919;
-    width: 18rem;
+    width: 20rem;
     display: block;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
 }
 
 #home-content #pastEventsBox {
     background: #751919;
-    width: 18rem;
+    width: 20rem;
     display: block;
     color: azure;
     border-radius: 10px;
-    padding: 15px;
 }
 
 /* SETTINGS PAGE */

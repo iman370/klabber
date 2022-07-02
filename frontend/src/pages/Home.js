@@ -1,18 +1,15 @@
-import React, {useEffect, useState, useRef} from 'react'
-import Card from 'react-bootstrap/Card'
+import React from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './styles/klabber.css';
 import MyProfileCard from './components/MyProfileCard.js';
 import HomePageFriends from './components/HomePageFriends';
-import klabberLogo from '../images/klabber-logo.png';
 
-function Home(props) {
+function Home() {
     let navigate = useNavigate()
     const location = useLocation();
     let username = location.state.username
