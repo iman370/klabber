@@ -74,7 +74,7 @@ def get_incoming_requests(request):
         thisUser = User.objects.get(username=user.senderId)
         users.append([thisUser.username, thisUser.first_name, 2])
 
-    return Response(sorted(users), status=status.HTTP_200_OK)
+    return Response(users, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])

@@ -8,6 +8,7 @@ import { useLocation } from 'react-router-dom';
 import './styles/klabber.css';
 import MyProfileCard from './components/MyProfileCard.js';
 import HomePageFriends from './components/HomePageFriends';
+import NotificationsCard from './components/NotificationsCard';
 
 function Home() {
     let navigate = useNavigate()
@@ -22,13 +23,7 @@ function Home() {
             <div id="column1">
                 <MyProfileCard nickname={first_name} username={username} email={email} />
                 <div className='divider' />
-                <Box id="notificationsBox">
-                    <Stack spacing={2}>
-                        <h1>Notifications</h1>
-                        <h1>Notification 1</h1>
-                        <h1>Notification 2</h1>
-                    </Stack>
-                </Box>
+                <NotificationsCard username={username} />
                 <div className='divider' />
                 <div onClick={() => navigate('../friends',{state:{username,first_name,email}})}>
                     <HomePageFriends username={username} />

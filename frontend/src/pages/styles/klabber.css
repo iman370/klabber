@@ -263,19 +263,33 @@
 }
 
 #home-content #profileCard {
-    background: #751919;
     width: 20rem;
-    display: flex;
-    color: azure;
     border-radius: 10px;
+    padding: 5px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+}
+
+#home-content #cardContent {
+    background: #751919;
+    border-radius: 7px;
+    width: 100%;
+    height: 100%;
 }
 
 #home-content #notificationsBox {
     background: #751919;
     width: 20rem;
+    height: 300px;
     display: block;
     color: azure;
     border-radius: 10px;
+}
+
+#home-content #notificationsBox #notificationsList {
+    width: 100%;
+    height: 240px;
+    overflow: auto;
 }
 
 #home-content #friendsCard {

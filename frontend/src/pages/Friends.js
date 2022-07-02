@@ -122,7 +122,6 @@ function Friends(props) {
                                 <h1>You have no incoming friend requests.</h1>
                             )
                         }
-                        console.log(user[0])
                         return(
                             <OtherUserCard user={user} myUser={username} />
                         )
