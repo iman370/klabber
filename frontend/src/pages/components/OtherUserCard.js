@@ -64,7 +64,7 @@ const sendFriendReq = (myuser, username) => {
   return (
     <Card sx={{
       width: 345,
-      bgcolor: '#751919',
+      bgcolor: '#58A4B0',
       ":hover":{
         transform: "scale3d(1.15, 1.15, 1)"
       },
@@ -86,8 +86,8 @@ const sendFriendReq = (myuser, username) => {
         display: 'inline',
         alignSelf: 'center',
         borderRadius: '20px',
-        bgcolor: '#000000',
-        color: 'azure',
+        bgcolor: '#1B1B1E',
+        color: '#D8DBE2',
       }} onClick={() => {sendFriendReq(myUser, username)}}>{friendButton}</Button>
     </Card>
   );

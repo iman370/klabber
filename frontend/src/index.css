@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(0, 0, 0);
+  background-color: #1B1B1E;
 }
 
 code {
@@ -15,467 +15,450 @@ code {
 
 h1 {
   font-family: monospace;
-  color: azure;
+  color: #373F51;
   text-align: center;
 }
 
 h2 {
   font-family: monospace;
-  color: darkred;
+  color: #58A4B0;
   text-align: center;
 }
 
 /* PICTURES AND LOGOS */
 .klabber-logo {
-  height: 100px;
-  width: 200px;
+    height: 100px;
+    width: 200px;
 }
 
 /* NAVIGATION BAR */
 .navbar {
 
-  /* ff 3.6+ */
-  background:-moz-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%); 
+    /* ff 3.6+ */
+    background:-moz-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%); 
 
-  /* safari 5.1+,chrome 10+ */
-  background:-webkit-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
 
-  /* opera 11.10+ */
-  background:-o-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+    /* opera 11.10+ */
+    background:-o-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
 
-  /* ie 6-9 */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#751919', endColorstr='#000000', GradientType=0 );
+    /* ie 6-9 */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#751919', endColorstr='#000000', GradientType=0 );
 
-  /* ie 10+ */
-  background:-ms-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+    /* ie 10+ */
+    background:-ms-linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
 
-  /* global 94%+ browsers support */
-  background:linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
+    /* global 94%+ browsers support */
+    background:linear-gradient(89deg, rgba(0, 0, 0, 1) 0%, rgba(117, 25, 25, 1) 99%);
 
-  padding-left: 1rem;
-  padding-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 
 }
 
 .navbar_logo {
-  margin-right: 2rem;
+    margin-right: 2rem;
 }
 
 .navbar_links {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  flex: 1;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    flex: 1;
 }
 
 /*Changes all the text inside the navbar_links container*/
 .navbar_links p {
-  color: azure;
-  margin: 0 1rem;
-  font-family: inter;
-  font-size: medium;
+    color: azure;
+    margin: 0 1rem;
+    font-family: inter;
+    font-size: medium;
 }
 
 /*Changes all the buttons inside the navbar_links container*/
 .navbar_links button {
-  width: 102px;
-  height: 38px;
-  left: 1152px;
-  top: 55px;
+    width: 102px;
+    height: 38px;
+    left: 1152px;
+    top: 55px;
 
-  background-color: black;
-  border-radius: 5px;
-  border-style: hidden;
+    background-color: black;
+    border-radius: 5px;
+    border-style: hidden;
 
-  color: azure;
-  font-family: inter;
-  font-size: medium;
-  text-align: center;
+    color: azure;
+    font-family: inter;
+    font-size: medium;
+    text-align: center;
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
 /* FOOTER */
 
 .footer-container {
-  background-color: #751919;
-  padding: 1rem;
+    background-color: #373F51;
+    padding: 1rem;
 }
 
 /* DIVIDERS */
 
 .divider {
-  height: 30px;
+    height: 30px;
 }
 
 .divider_small {
-  height: 10px;
+    height: 10px;
 }
 
 .divider_small2 {
-  height: 2rem;
+    height: 2rem;
 }
 
 .friends-card-divider {
-  width: 1rem;
+    width: 1rem;
 }
 
 /* LANDING PAGE */
 
 #landing-content {
-  display: flex;
+    display: flex;
 }
 
 #landing-content #mainbox1 {
-  width: 480px;
-  display: block;
-  margin: 130px auto;
+    width: 480px;
+    display: block;
+    margin: 130px auto;
 }
 
 #landing-content button {
-  border: none;
-  font-size: 24px;
-  line-height: 72px;
-  color: #fff;
-  text-align: center;
-  background-color: #751919;
-  border-radius: 12px;
-  display: block;
-  width: 100%;
-  cursor: pointer;
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #D8DBE2;
+    text-align: center;
+    background-color: #58a4b0;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
 }
 
 #landing-content h2 {
-  align-items: center;
+    align-items: center;
 }
 
 /* SIGN UP PAGE */
 
 #signup-content {
-  display: block;
+    display: block;
 }
 
 #signup-content #mainbox1 {
-  width: 480px;
-  display: block;
-  margin: 130px auto;
+    width: 480px;
+    display: block;
+    margin: 130px auto;
 }
 
 #signup-content button {
-  border: none;
-  font-size: 24px;
-  line-height: 72px;
-  color: #fff;
-  text-align: center;
-  background-color: #751919;
-  border-radius: 12px;
-  display: block;
-  width: 100%;
-  cursor: pointer;
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #D8DBE2;
+    text-align: center;
+    background-color: #58a4b0;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
 }
 
 #signup-content #mainbox1 input {
-  background-color: azure;
-  color: #751919;
-  font-size: 24px;
-  line-height: 72px;
-  padding: 0 30px;
-  box-sizing: border-box;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: none;
-  width: 100%;
+    background-color: #D8DBE2;
+    color: #58a4b0;
+    font-size: 24px;
+    line-height: 72px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: none;
+    width: 100%;
 }
 
 #signup-content #mainbox1 a {
-  color: rgb(139, 143, 143);
-  position: relative;
-  right: -28%;
+    color: #D8DBE2;
+    position: relative;
+    right: -28%;
 }
 
 #signup-content h2 {
-  align-items: center;
+    align-items: center;
 }
 
 /* SIGN IN PAGE */
 
 #signin-content {
-  display: block;
+    display: block;
 }
 
 #signin-content #mainbox1 {
-  width: 480px;
-  display: block;
-  margin: 130px auto;
+    width: 480px;
+    display: block;
+    margin: 130px auto;
 }
 
 #signin-content #mainbox1 button {
-  border: none;
-  font-size: 24px;
-  line-height: 72px;
-  color: #fff;
-  text-align: center;
-  background-color: #751919;
-  border-radius: 12px;
-  display: block;
-  width: 100%;
-  cursor: pointer;
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #D8DBE2;
+    text-align: center;
+    background-color: #58a4b0;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
 }
 
 #signin-content #mainbox1 input {
-  background-color: azure;
-  color: #751919;
-  font-size: 24px;
-  line-height: 72px;
-  padding: 0 30px;
-  box-sizing: border-box;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: none;
-  width: 100%;
+    background-color: #D8DBE2;
+    color: #58a4b0;
+    font-size: 24px;
+    line-height: 72px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: none;
+    width: 100%;
 }
 
 #signin-content #mainbox1 a {
-  color: rgb(139, 143, 143);
-  position: relative;
-  right: -28%;
+    color: #D8DBE2;
+    position: relative;
+    right: -28%;
 }
 
 #signin-content h2 {
-  align-items: center;
+    align-items: center;
 }
 
 /* HOME PAGE */
 
 #home-content {
-  display: block;
-  margin: 4rem auto;
-  justify-content: center;
+    display: block;
+    margin: 4rem auto;
+    justify-content: center;
 }
 
 #home-content #mainbox1 {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-column-gap: 20px;
-  justify-content: center;
-  align-items: start;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
+    justify-content: center;
+    align-items: start;
 }
 
 #home-content #column1 {
-  display: block;
+    display: block;
 }
 
 #home-content #column2 {
-  display: block;
+    display: block;
 }
 
 #home-content #column3 {
-  display: block;
-}
-
-#home-content #mainbox1 button { /* no longer needed? */
-  border: none;
-  font-size: 24px;
-  line-height: 72px;
-  color: #fff;
-  text-align: center;
-  background-color: #751919;
-  border-radius: 12px;
-  display: block;
-  width: 100%;
-  cursor: pointer;
+    display: block;
 }
 
 #home-content #profileCard {
-  width: 20rem;
-  border-radius: 10px;
-  padding: 5px;
-  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
-  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
-}
-
-#home-content #cardContent {
-  background: #751919;
-  border-radius: 7px;
-  width: 100%;
-  height: 100%;
+    width: 20rem;
+    background: #58a4b0;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #home-content #notificationsBox {
-  background: #751919;
-  width: 20rem;
-  height: 300px;
-  display: block;
-  color: azure;
-  border-radius: 10px;
+    background: #58a4b0;
+    width: 20rem;
+    height: 300px;
+    display: block;
+    color: #D8DBE2;
+    border-radius: 10px;
 }
 
 #home-content #notificationsBox #notificationsList {
-  width: 100%;
-  height: 240px;
-  overflow: auto;
-  align-items: center;
+    width: 100%;
+    height: 240px;
+    overflow: auto;
+    align-items: center;
 }
 
 #home-content #friendsCard {
-  background: #751919;
+    background: #58a4b0;
+    width: 20rem;
+    display: block;
+    color: #D8DBE2;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#home-content #statusTab {
   width: 20rem;
-  display: block;
-  color: azure;
-  border-radius: 10px;
-  cursor: pointer;
 }
 
-#home-content #statusBox {
-  width: 18rem;
-  color: azure;
+#home-content #statusTab #statusBox {
+    width: 100%;
+    color: #D8DBE2;
 }
 
-#home-content #otherStatusBox {
-  background: #751919;
-  width: 20rem;
-  height: 365px;
-  display: block;
-  color: azure;
-  border-radius: 10px;
+#home-content #statusTab #otherStatusBox {
+    background: #58a4b0;
+    width: 20rem;
+    height: 365px;
+    display: block;
+    color: #D8DBE2;
+    border-radius: 10px;
 }
 
-#home-content #otherStatusBox #statusList {
-  width: 100%;
-  height: 300px;
-  overflow: auto;
-  align-items: center;
+#home-content #statusTab #otherStatusBox #statusList {
+    width: 100%;
+    height: 300px;
+    overflow: auto;
+    align-items: center;
 }
 
 #home-content #klabsButtonBox {
-  width: 20rem;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 10px;
-  justify-items: stretch;
-  align-items: stretch;
-  border-radius: 10px;
+    width: 20rem;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 10px;
+    justify-items: stretch;
+    align-items: stretch;
+    border-radius: 10px;
 }
 
 #home-content #klabsButtonBox Button {
-  background: #751919;
-  display: block;
-  color: azure;
-  border-radius: 10px;
-  padding: 5px;
+    background: #58a4b0;
+    display: block;
+    color: #D8DBE2;
+    border-radius: 10px;
+    padding: 5px;
 }
 
 #home-content #upcomingKlabsBox {
-  background: #751919;
-  width: 20rem;
-  height: 130px;
-  display: block;
-  color: azure;
-  border-radius: 10px;
+    background: #58a4b0;
+    width: 20rem;
+    height: 130px;
+    display: block;
+    color: #D8DBE2;
+    border-radius: 10px;
 }
 
 #home-content #pastKlabsBox {
-  background: #751919;
-  width: 20rem;
-  height: 130px;
-  display: block;
-  color: azure;
-  border-radius: 10px;
+    background: #58a4b0;
+    width: 20rem;
+    height: 130px;
+    display: block;
+    color: #D8DBE2;
+    border-radius: 10px;
 }
 
 /* SETTINGS PAGE */
 
 #settings-content {
-  display: block;
+    display: block;
 }
 
 #settings-content #mainbox1 {
-  width: 480px;
-  display: block;
-  margin: 130px auto;
+    width: 480px;
+    display: block;
+    margin: 130px auto;
 }
 
 #settings-content #mainbox1 button {
-  border: none;
-  font-size: 24px;
-  line-height: 72px;
-  color: #fff;
-  text-align: center;
-  background-color: #751919;
-  border-radius: 12px;
-  display: block;
-  width: 100%;
-  cursor: pointer;
+    border: none;
+    font-size: 24px;
+    line-height: 72px;
+    color: #fff;
+    text-align: center;
+    background-color: #751919;
+    border-radius: 12px;
+    display: block;
+    width: 100%;
+    cursor: pointer;
 }
 
 #settings-content #mainbox1 input {
-  background-color: azure;
-  color: #751919;
-  font-size: 24px;
-  line-height: 72px;
-  padding: 0 30px;
-  box-sizing: border-box;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  border: none;
-  width: 100%;
+    background-color: azure;
+    color: #751919;
+    font-size: 24px;
+    line-height: 72px;
+    padding: 0 30px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: none;
+    width: 100%;
 }
 
 #settings-content #mainbox1 a {
-  color: rgb(139, 143, 143);
-  position: relative;
-  right: -28%;
+    color: rgb(139, 143, 143);
+    position: relative;
+    right: -28%;
 }
 
 #settings-content h2 {
-  align-items: center;
+    align-items: center;
 }
 
 /* FRIENDS PAGE */
 
 #friends-content {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #friends-content #buttonsbox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #friends-content #buttonsbox Button {
-  align-self: stretch;
-  text-align: center;
-  font-size: 24px;
-  color: #751919;
+    align-self: stretch;
+    text-align: center;
+    font-size: 24px;
+    color: #58A4B0;
 }
 
 #friends-content #users-container {
-  display: grid;
-  max-width: 1170px;
-  margin: 0 auto;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  justify-items: center;
-  align-items: center;
+    display: grid;
+    max-width: 1170px;
+    margin: 0 auto;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: center;
+    align-items: center;
 }
 
 #friends-content .user-card { /*USELESS FOR NOW*/
-  border: none;
-  border-radius: 10px;
-  background: #751919;
-  display: block;
-  color: azure;
-  text-align: center;
-  font-size: 24px;
-  line-height: 60px;
-  width: 100px;
+    border: none;
+    border-radius: 10px;
+    background: #58a4b0;
+    display: block;
+    color: #D8DBE2;
+    text-align: center;
+    font-size: 24px;
+    line-height: 60px;
+    width: 100px;
 
 }

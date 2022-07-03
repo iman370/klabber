@@ -77,33 +77,35 @@ function StatusBox({username}) {
 
     return ( //Button is outside statusBox. Have fun with this when you start frontend design :)
         <>
-        <TextField
-            id="statusBox"
-            label="Your status"
-            multiline
-            rows={4}
-            placeholder="Say something!"
-            value={defaultValue}
-            onChange={handleChange}
-            focused />
-        <Button onClick={() => postStatus(document.getElementById('statusBox').value)}>Post</Button>
-        <div className='divider' />
-        <Box id="otherStatusBox">
-            <h1>Status</h1>
-            <Stack spacing={2} id="statusList">
-                {statuses.map(function(userStatus){
-                    if (userStatus == 'Nothing to show.') {
+        <div id="statusTab">
+            <TextField
+                id="statusBox"
+                label="Your status"
+                multiline
+                rows={4}
+                placeholder="Say something!"
+                value={defaultValue}
+                onChange={handleChange}
+                focused />
+            <Button onClick={() => postStatus(document.getElementById('statusBox').value)}>Post</Button>
+            <div className='divider' />
+            <Box id="otherStatusBox">
+                <h1>Status</h1>
+                <Stack spacing={2} id="statusList">
+                    {statuses.map(function(userStatus){
+                        if (userStatus == 'Nothing to show.') {
+                            return(
+                                <h3>Nothing to show.</h3>
+                            )
+                        }
+                        console.log("lol")
                         return(
-                            <h3>Nothing to show.</h3>
+                            <ShowStatusCard status={userStatus}/>
                         )
-                    }
-                    console.log("lol")
-                    return(
-                        <ShowStatusCard status={userStatus}/>
-                    )
-                    })}
-            </Stack>
-        </Box>
+                        })}
+                </Stack>
+            </Box>
+        </div>
         </>
       );
 }
