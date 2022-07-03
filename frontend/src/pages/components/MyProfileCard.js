@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
-import '../styles/klabber.css';
 
 function myProfileCard({nickname, username, email}) {
     return (

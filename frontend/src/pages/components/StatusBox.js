@@ -3,7 +3,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import '../styles/klabber.css';
 import ShowStatusCard from './ShowStatusCard';
 
 function StatusBox({username}) {
@@ -14,12 +13,12 @@ function StatusBox({username}) {
         setDefaultValue(event.target.value);
       };
 
-      useEffect(() => {
+    useEffect(() => {
         let mounted = true;
         setStatuses([])
         getStatuses()
         return () => mounted = false;
-      }, [])
+    }, [])
 
     const getCookie = (name) => {
         var cookieValue = null;

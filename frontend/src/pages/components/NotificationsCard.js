@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import '../styles/klabber.css';
 import OtherUserCard from './OtherUserCard';
 
 function NotificationsCard ({username}) {

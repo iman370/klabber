@@ -3,7 +3,6 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import './styles/klabber.css';
 import MyProfileCard from './components/MyProfileCard.js';
 import HomePageFriends from './components/HomePageFriends';
 import NotificationsCard from './components/NotificationsCard';

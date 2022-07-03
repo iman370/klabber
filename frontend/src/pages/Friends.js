@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import OtherUserCard from './components/OtherUserCard';
 import { useLocation } from 'react-router-dom';
-import './styles/klabber.css';
 
 function Friends(props) {
     const location = useLocation();

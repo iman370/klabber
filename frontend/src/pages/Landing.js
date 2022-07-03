@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
-import './styles/klabber.css';
 import klabberLogo from '../images/klabber-logo.png';
 
 function Landing(props) {

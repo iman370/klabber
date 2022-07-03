@@ -3,7 +3,6 @@ import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import '../styles/klabber.css';
 
 function OtherUserCard({user, myUser}) {
   const [username, setUsername] = useState(user[0]);
