@@ -1,7 +1,5 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
@@ -9,6 +7,7 @@ import './styles/klabber.css';
 import MyProfileCard from './components/MyProfileCard.js';
 import HomePageFriends from './components/HomePageFriends';
 import NotificationsCard from './components/NotificationsCard';
+import StatusBox from './components/StatusBox';
 
 function Home() {
     let navigate = useNavigate()
@@ -30,22 +29,7 @@ function Home() {
                 </div>
             </div>
             <div id="column2">
-                <TextField
-                    id="statusBox"
-                    label="Your status"
-                    multiline
-                    rows={4}
-                    placeholder="Say something!"
-                    focused
-                />
-                <div className='divider' />
-                <Box id="otherStatusBox">
-                    <Stack spacing={2}>
-                        <h1>Status</h1>
-                        <h1>Status 1</h1>
-                        <h1>Status 2</h1>
-                    </Stack>
-                </Box>
+                <StatusBox username={username} />
             </div>
             <div id="column3">
                 <div id="klabsButtonBox">
