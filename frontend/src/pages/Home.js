@@ -39,26 +39,26 @@ function Home() {
                     focused
                 />
                 <div className='divider' />
-                <Box id="klabsBox">
+                <Box id="otherStatusBox">
                     <Stack spacing={2}>
-                        <h1>klabs</h1>
-                        <h1>klab 1</h1>
-                        <h1>klab 2</h1>
+                        <h1>Status</h1>
+                        <h1>Status 1</h1>
+                        <h1>Status 2</h1>
                     </Stack>
                 </Box>
             </div>
             <div id="column3">
-                <div id="eventsButtonBox">
-                    <Button>Create Event</Button>
-                    <Button>Find Event</Button>
+                <div id="klabsButtonBox">
+                    <Button>Create Klab</Button>
+                    <Button>Find Klab</Button>
                 </div>
                 <div className='divider'/>
-                <Box id="upcomingEventsBox">
-                    <h1>Upcoming Events</h1>
+                <Box id="upcomingKlabsBox">
+                    <h1>Upcoming Klabs</h1>
                 </Box>
                 <div className='divider'/>
-                <Box id="pastEventsBox">
-                    <h1>Past Events</h1>
+                <Box id="pastKlabsBox">
+                    <h1>Past klabs</h1>
                 </Box>
             </div>
 
