@@ -20,5 +20,16 @@ def post_status(request):
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status.HTTP_200_OK)
-    print("last line")
     return Response((), status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_statuses(request):
+    allStatuses = []
+    statuses = Status.objects.all()
+    for userStatus in statuses:
+        username = User.objects.get(username=userStatus.userId).username
+        nickname = User.objects.get(username=userStatus.userId).first_name
+        text = userStatus.text
+        allStatuses.append([username, nickname, text])
+
+    return Response(list(reversed(allStatuses)), status=status.HTTP_200_OK)

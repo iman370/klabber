@@ -39,15 +39,15 @@ function NotificationsCard ({username}) {
             <h1>Notifications</h1>
             <Stack spacing={2} id="notificationsList">
                 {notifications.map(function(notification){
-                            if (notification == 'No notifications.') {
-                                return(
-                                    <h3>No notifications.</h3>
-                                )
-                            }
-                            return(
-                                <OtherUserCard user={notification} myUser={username} />
-                            )
-                        })}
+                    if (notification == 'No notifications.') {
+                        return(
+                            <h3>No notifications.</h3>
+                        )
+                    }
+                    return(
+                        <OtherUserCard user={notification} myUser={username} />
+                    )
+                })}
             </Stack>
         </Box>
       );
