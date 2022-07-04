@@ -1,3 +1,12 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from rest_framework_jwt.settings import api_settings
+from .models import klab, participants
+
+class KlabSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = klab
+        fields = ('userId','date','time','place','description','maxSpaces')
+
+class ParticipantsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = participants
+        fields = ('klab','userId')
