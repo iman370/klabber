@@ -472,8 +472,36 @@ h2 {
 }
 
 /* CREATE KLAB PAGE */
-#create-klab-content {
-    padding: 2rem;
+#create-klab-container {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 65% 35%;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+#create-klab-container h1 {
+    font-family: monospace;
+    color: #D8DBE2;
+    text-align: center;
+}
+
+#create-klab-left {
+    height: 100vh;
+    display:block;
+    align-items: center;
+    background-color: #373F51;
+    overflow: auto;
+}
+
+#create-klab-left p {
+    color: #D8DBE2;
+    text-align: center;
+}
+
+#create-klab-right {
+    margin: 2rem;
     display: block;
     align-items: center;
+    background-color: #1B1B1E;
 }
