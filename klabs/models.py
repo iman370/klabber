@@ -7,7 +7,7 @@ class klab(models.Model):
     time = models.TimeField()
     place = models.CharField(max_length=20)
     description = models.CharField(max_length=280)
-    maxSpaces = models.IntegerField(max_length=3)
+    maxSpaces = models.IntegerField()
 
 class participants(models.Model):
     klab = models.ForeignKey(klab, on_delete=models.CASCADE)

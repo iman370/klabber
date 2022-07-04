@@ -1,4 +1,3 @@
-import './App.css';
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -11,6 +10,7 @@ import SignUp from './pages/SignUp';
 import Home from './pages/Home';
 import Settings from './pages/Settings';
 import Friends from './pages/Friends';
+import CreateKlab from "./pages/CreateKlab";
 
 const App = () => {
   let routes = useRoutes([
@@ -20,6 +20,7 @@ const App = () => {
     { path: "/home", element: <Home /> },
     { path: "/settings", element: <Settings /> },
     { path: "/friends", element: <Friends /> },
+    { path: "/create-klab", element: <CreateKlab /> },
   ]);
   return routes;
 };

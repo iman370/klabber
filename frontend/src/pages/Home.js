@@ -32,7 +32,7 @@ function Home() {
             </div>
             <div id="column3">
                 <div id="klabsButtonBox">
-                    <Button>Create Klab</Button>
+                    <Button onClick={() => navigate('../create-klab',{state:{username,first_name,email}})}>Create Klab</Button>
                     <Button>Find Klab</Button>
                 </div>
                 <div className='divider'/>

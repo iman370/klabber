@@ -470,3 +470,10 @@ h2 {
     width: 100px;
 
 }
+
+/* CREATE KLAB PAGE */
+#create-klab-content {
+    padding: 2rem;
+    display: block;
+    align-items: center;
+}
