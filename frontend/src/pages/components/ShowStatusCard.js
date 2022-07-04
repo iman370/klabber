@@ -1,6 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import React, {useState} from 'react';
 
 function ShowStatusCard({status}) {
     const [username, setUsername] = useState(status[0]);
