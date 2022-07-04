@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 import ShowStatusCard from './ShowStatusCard';
 
 function StatusBox({username}) {
+    const [alert, setAlert] = useState(false);
     const [statuses, setStatuses] = useState(['Nothing to show.']);
 
     const [defaultValue, setDefaultValue] = useState('');
@@ -47,9 +48,10 @@ function StatusBox({username}) {
             },
             body: JSON.stringify({'username':username, 'text': text})
         }).then((res) => {
-            console.log(res)
-            setDefaultValue('')
             if (res.ok) {
+                setDefaultValue('')
+                setStatuses([])
+                getStatuses()
                 return res.json()
             }
         })
