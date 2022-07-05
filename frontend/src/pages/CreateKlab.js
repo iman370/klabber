@@ -54,7 +54,7 @@ function CreateKlab() {
                     <h1>What is this klab for?</h1>
                     <TextField
                         required
-                        id="standard-required"
+                        id="desc"
                         label="Description"
                         defaultValue=""
                         variant="standard"
@@ -90,7 +90,7 @@ function CreateKlab() {
                     <h1>Where will it be held?</h1>
                     <TextField
                         required
-                        id="standard-required"
+                        id="place"
                         label="Place"
                         defaultValue=""
                         variant="standard"
@@ -100,7 +100,7 @@ function CreateKlab() {
                     <p>(Excluding you)</p>
                     <TextField
                         required
-                        id="standard-number"
+                        id="maxspaces"
                         label="Maximum Spaces"
                         type="number"
                         InputLabelProps={{
@@ -116,7 +116,7 @@ function CreateKlab() {
             </div>
             <div id="create-klab-right">
                 <h1>test</h1>
-                <Button onClick={() => navigate('../home',{state:{username,first_name,email}})}>Post</Button>
+                <Button onClick={() => postKlab(document.getElementById('date').value, document.getElementById('time').value, document.getElementById('place').value, document.getElementById('desc').value, document.getElementById('maxspaces').value)}>Post</Button>
                 <div className='divider' />
                 <Button onClick={() => navigate('../home',{state:{username,first_name,email}})}>Back</Button>
             </div>

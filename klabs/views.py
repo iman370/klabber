@@ -14,14 +14,14 @@ def post_klab(request):
     username = data['username']
     userId = User.objects.get(username=username).id
     date = data['date']
-    print("date: " + date)
-    eventDate = datetime.date(2022,8,1) #1st August 2022
+    splitData = date.split("-")
+    eventDate = datetime.date(int(splitData[0]),int(splitData[1]),int(splitData[2]))
     time = data['time']
-    print("time: " + time)
-    eventTime = datetime.time(10,00) #10am
+    splitTime = time.split(":")
+    eventTime = datetime.time(int(splitTime[0]),int(splitTime[1])) 
     place = data['place']
     description = data['description']
-    maxSpaces = data['maxSpaces']
+    maxSpaces = int(data['maxSpaces'])
     if (len(description) == 0):
         return Response('empty-field', status.HTTP_400_BAD_REQUEST)
     if (maxSpaces<1):
