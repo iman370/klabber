@@ -24,7 +24,7 @@ def post_klab(request):
     maxSpaces = data['maxSpaces']
     if (len(description) == 0):
         return Response('empty-field', status.HTTP_400_BAD_REQUEST)
-    if (maxSpaces<2):
+    if (maxSpaces<1):
         return Response('not-enough-spaces', status.HTTP_400_BAD_REQUEST)
 
     serializer = KlabSerializer(data={'userId':userId,'date':eventDate,'time':eventTime,'place':place,'description':description,'maxSpaces':maxSpaces})
