@@ -2,6 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+//import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+//import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+//import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+//import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 function CreateKlab() {
     let navigate = useNavigate();
@@ -58,20 +62,29 @@ function CreateKlab() {
                     <div className='divider' />
                     <h1>What date will this be?</h1>
                     <TextField
-                        required
-                        id="standard-required"
+                        id="date"
                         label="Date"
-                        defaultValue=""
-                        variant="standard"
+                        type="date"
+                        defaultValue="2022-07-24"
+                        sx={{ width: 220 }}
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
                     />
                     <div className='divider' />
                     <h1>Time?</h1>
                     <TextField
-                        required
-                        id="standard-required"
+                        id="time"
                         label="Time"
-                        defaultValue=""
-                        variant="standard"
+                        type="time"
+                        defaultValue="07:30"
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                        inputProps={{
+                        step: 300, // 5 min
+                        }}
+                        sx={{ width: 150 }}
                     />
                     <div className='divider' />
                     <h1>Where will it be held?</h1>
@@ -86,6 +99,7 @@ function CreateKlab() {
                     <h1>How many people can join?</h1>
                     <p>(Excluding you)</p>
                     <TextField
+                        required
                         id="standard-number"
                         label="Maximum Spaces"
                         type="number"
