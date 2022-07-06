@@ -7,11 +7,54 @@ function FindKlab() {
     let navigate = useNavigate();
     const location = useLocation();
     let username = location.state.username
-    let first_name = location.state.first_name
-    let email = location.state.email
+    let first_name = location.state.first_name //remove
+    let email = location.state.email //remove
+
+    const [klabs, setKlabs] = useState(['No klabs available.']);
+
+    useEffect(() => {
+        let mounted = true;
+        setKlabs([])
+        getAllKlabs()
+        return () => mounted = false;
+      }, [])
+
+    const getAllKlabs = () => {
+        fetch('http://127.0.0.1:8000/api/get-all-klabs?username='+username, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify()
+        }).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then((data) => {
+            if (data.length === 0) {
+                setKlabs(['No klabs available.'])
+            } else {
+                setKlabs(data)
+            }
+        }, [klabs])
+    }
 
     return (
-        <h1>AAAA</h1>
+        <div id="FindKlabs-content">
+            <h1>Find Klabs</h1>
+            <div id="klabs-container">
+                {klabs.map(function(klab){
+                    if (klab == 'No klabs available.') {
+                        return(
+                            <h1>No klabs available.</h1>
+                        )
+                    }
+                    return(
+                        <JoinKlab klab={klab} myUser={username} />
+                    )
+                })}
+            </div>
+        </div>
     )
 
 }

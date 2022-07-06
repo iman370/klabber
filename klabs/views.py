@@ -33,3 +33,15 @@ def post_klab(request):
         return Response(serializer.data, status.HTTP_200_OK)
 
     return Response((), status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def get_all_klabs(request):
+    myUsername = request.GET.get('username','')
+    myId = User.objects.get(username=myUsername).id
+
+    klabs = klab.objects.exclude(userId=myId)
+    allKlabs = []
+    for event in klabs:
+        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces])
+
+    return Response(allKlabs, status=status.HTTP_200_OK)

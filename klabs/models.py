@@ -15,5 +15,5 @@ class participant(models.Model):
 
 class joinRequest(models.Model):
     klab = models.ForeignKey(klab, on_delete=models.CASCADE)
-    hostId = models.ForeignKey(User, on_delete=models.CASCADE)
-    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    hostId = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hostId')
+    userId = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userId')
