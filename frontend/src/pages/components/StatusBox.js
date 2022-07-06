@@ -100,7 +100,6 @@ function StatusBox({username}) {
                                 <h3>Nothing to show.</h3>
                             )
                         }
-                        console.log("lol")
                         return(
                             <ShowStatusCard status={userStatus}/>
                         )

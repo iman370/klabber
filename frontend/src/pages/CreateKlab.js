@@ -2,10 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-//import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-//import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-//import { TimePicker } from '@mui/x-date-pickers/TimePicker';
-//import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 function CreateKlab() {
     let navigate = useNavigate();
@@ -115,10 +111,12 @@ function CreateKlab() {
                 </div>
             </div>
             <div id="create-klab-right">
-                <h1>test</h1>
-                <Button onClick={() => postKlab(document.getElementById('date').value, document.getElementById('time').value, document.getElementById('place').value, document.getElementById('desc').value, document.getElementById('maxspaces').value)}>Post</Button>
-                <div className='divider' />
-                <Button onClick={() => navigate('../home',{state:{username,first_name,email}})}>Back</Button>
+                <div id="right-container">
+                    <h1>test</h1>
+                    <Button onClick={() => postKlab(document.getElementById('date').value, document.getElementById('time').value, document.getElementById('place').value, document.getElementById('desc').value, document.getElementById('maxspaces').value)}>Post</Button>
+                    <div className='divider' />
+                    <Button onClick={() => navigate('../home',{state:{username,first_name,email}})}>Back</Button>
+                </div>
             </div>
         </div>
     )

@@ -514,3 +514,20 @@ h2 {
     align-items: center;
     background-color: #1B1B1E;
 }
+
+#create-klab-right #right-container {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+#create-klab-right Button {
+    background: #58a4b0;
+    display: block;
+    justify-self: center;
+    color: #D8DBE2;
+    border-radius: 10px;
+    padding: 5px;
+}
