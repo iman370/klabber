@@ -11,7 +11,7 @@ function JoinKlab({klab, myUser}) {
     const [description, setDescription] = useState(klab[4]);
     const [maxSpaces, setMaxSpaces] = useState(klab[5]);
 
-    const [joinButton, setJoinButton] = useState("Join");
+    const [joinButton, setJoinButton] = useState("Request to Join");
 
     const getCookie = (name) => {
         var cookieValue = null;
@@ -32,6 +32,7 @@ function JoinKlab({klab, myUser}) {
     return (
         <Card sx={{
             width: 345,
+            height: 250,
             bgcolor: '#58A4B0',
             ":hover":{
               transform: "scale3d(1.15, 1.15, 1)"
@@ -43,7 +44,7 @@ function JoinKlab({klab, myUser}) {
                 color:'azure',
               }}
               title={description}
-              subheader={"Date: "+{klabDate}+"   Time: "+{klabTime}}
+              subheader={"Date: "+klabDate+"   Time: "+klabTime}
             />
             <Button sx={{
               display: 'inline',

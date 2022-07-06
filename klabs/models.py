@@ -8,6 +8,7 @@ class klab(models.Model):
     place = models.CharField(max_length=20)
     description = models.CharField(max_length=280)
     maxSpaces = models.IntegerField()
+    remainingSpaces = models.IntegerField(default=3)
 
 class participant(models.Model):
     klab = models.ForeignKey(klab, on_delete=models.CASCADE)

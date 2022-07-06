@@ -26,8 +26,10 @@ def post_klab(request):
         return Response('empty-field', status.HTTP_400_BAD_REQUEST)
     if (maxSpaces<1):
         return Response('not-enough-spaces', status.HTTP_400_BAD_REQUEST)
+    if (klab.objects.filter(userId=userId,date=eventDate,time=eventTime,place=place,description=description,maxSpaces=maxSpaces).exists()):
+        return Response('already-exists', status.HTTP_400_BAD_REQUEST)
 
-    serializer = KlabSerializer(data={'userId':userId,'date':eventDate,'time':eventTime,'place':place,'description':description,'maxSpaces':maxSpaces})
+    serializer = KlabSerializer(data={'userId':userId,'date':eventDate,'time':eventTime,'place':place,'description':description,'maxSpaces':maxSpaces,'remainingSpaces':maxSpaces})
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status.HTTP_200_OK)
@@ -42,6 +44,18 @@ def get_all_klabs(request):
     klabs = klab.objects.exclude(userId=myId)
     allKlabs = []
     for event in klabs:
-        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces])
+        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
+
+    return Response(allKlabs, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def get_my_klabs(request):
+    myUsername = request.GET.get('username','')
+    myId = User.objects.get(username=myUsername).id
+
+    klabs = klab.objects.get(userId=myId)
+    allKlabs = []
+    for event in klabs:
+        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
