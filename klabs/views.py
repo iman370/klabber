@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
-from .models import klab, participants
-from .serializers import KlabSerializer, ParticipantsSerializer
+from .models import klab, participant
+from .serializers import KlabSerializer, ParticipantSerializer
 
 import datetime
 

@@ -9,6 +9,11 @@ class klab(models.Model):
     description = models.CharField(max_length=280)
     maxSpaces = models.IntegerField()
 
-class participants(models.Model):
+class participant(models.Model):
     klab = models.ForeignKey(klab, on_delete=models.CASCADE)
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class joinRequest(models.Model):
+    klab = models.ForeignKey(klab, on_delete=models.CASCADE)
+    hostId = models.ForeignKey(User, on_delete=models.CASCADE)
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
