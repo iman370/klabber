@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 import JoinKlab from './components/JoinKlab';
 
 function FindKlab() {
@@ -34,6 +35,7 @@ function FindKlab() {
             if (data.length === 0) {
                 setKlabs(['No klabs available.'])
             } else {
+                setKlabs([])
                 setKlabs(data)
             }
         }, [klabs])
