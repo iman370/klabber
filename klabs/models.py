@@ -18,3 +18,8 @@ class joinRequest(models.Model):
     klab = models.ForeignKey(klab, on_delete=models.CASCADE)
     hostId = models.ForeignKey(User, on_delete=models.CASCADE, related_name='hostId')
     userId = models.ForeignKey(User, on_delete=models.CASCADE, related_name='userId')
+
+class inviteRequest(models.Model):
+    klab = models.ForeignKey(klab, on_delete=models.CASCADE)
+    klabHostID = models.ForeignKey(User, on_delete=models.CASCADE, related_name='klabHostID')
+    senderID = models.ForeignKey(User, on_delete=models.CASCADE, related_name='senderID')

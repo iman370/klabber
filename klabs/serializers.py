@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import klab, participant, joinRequest
+from .models import klab, participant, joinRequest, inviteRequest
 
 class KlabSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,6 +12,11 @@ class ParticipantSerializer(serializers.ModelSerializer):
         fields = ('klab','userId')
 
 class JoinReqSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = joinRequest
+        fields = ('klab','hostId','userId')
+
+class InviteSerializer(serializers.ModelSerializer):
     class Meta:
         model = joinRequest
         fields = ('klab','hostId','userId')

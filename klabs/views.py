@@ -56,6 +56,13 @@ def get_my_klabs(request):
     klabs = klab.objects.get(userId=myId)
     allKlabs = []
     for event in klabs:
+        #If they're a participant
+
+        #If they've requested to join
+
+        #If they've been invited
+
+        #No connection to the klab
         allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
