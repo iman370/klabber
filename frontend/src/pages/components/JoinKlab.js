@@ -4,14 +4,29 @@ import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 
 function JoinKlab({klab, myUser}) {
-    const [host, setHost] = useState(klab[0]);
-    const [klabDate, setDate] = useState(klab[1]);
-    const [klabTime, setTime] = useState(klab[2]);
-    const [place, setPlace] = useState(klab[3]);
-    const [description, setDescription] = useState(klab[4]);
-    const [maxSpaces, setMaxSpaces] = useState(klab[5]);
+  const [host, setHost] = useState(klab[0]);
+  const [klabDate, setDate] = useState(klab[1]);
+  const [klabTime, setTime] = useState(klab[2]);
+  const [place, setPlace] = useState(klab[3]);
+  const [description, setDescription] = useState(klab[4]);
+  const [maxSpaces, setMaxSpaces] = useState(klab[5]);
+  const [joinStatus, setJoinStatus] = useState(klab[6]);
 
-    const [joinButton, setJoinButton] = useState("Request to Join");
+  const [joinButton, setJoinButton] = useState("Request to Join");
+
+  useEffect(() => {
+    let mounted = true;
+    if (joinStatus == 0) {
+      setJoinButton("Request to Join")
+    } else if (joinStatus == 1) {
+      setJoinButton("Joined")
+    } else if (joinStatus == 2) {
+      setJoinButton("Requested")
+    } else if (joinStatus == 3) {
+      setJoinButton("Accept Invite")
+    }
+    return () => mounted = false;
+  }, [joinStatus])
 
     const getCookie = (name) => {
         var cookieValue = null;

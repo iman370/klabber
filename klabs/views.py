@@ -1,12 +1,18 @@
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
-from .models import klab, participant
+from .models import inviteRequest, joinRequest, klab, participant
 from .serializers import KlabSerializer, ParticipantSerializer
 
 import datetime
 
 from rest_framework.decorators import api_view
+
+#KLAB CODES
+# 0 - Not apart of the klab
+# 1 - Joined the klab
+# 2 - Requested
+# 3 - Invited
 
 @api_view(['POST'])
 def post_klab(request):
@@ -36,6 +42,10 @@ def post_klab(request):
 
     return Response((), status=status.HTTP_400_BAD_REQUEST)
 
+#NOTES
+#Add event.id
+#Fix this code (it shows Accept Invite instead of Join)
+
 @api_view(['GET'])
 def get_all_klabs(request):
     myUsername = request.GET.get('username','')
@@ -44,7 +54,23 @@ def get_all_klabs(request):
     klabs = klab.objects.exclude(userId=myId)
     allKlabs = []
     for event in klabs:
-        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
+        #If they're a participant
+        if (participant.objects.filter(klab=event, userId=myId).exists()):
+            allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 1])
+            continue
+
+        #If they've requested to join
+        if (joinRequest.objects.filter(klab=event, userId=myId).exists()):
+            allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 2])
+            continue
+
+        #If they've been invited
+        if (inviteRequest.objects.filter(klab=event, senderID=myId).exists()):
+            allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 3])
+            continue
+
+        #No connection to the klab
+        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 0])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
 
@@ -56,13 +82,10 @@ def get_my_klabs(request):
     klabs = klab.objects.get(userId=myId)
     allKlabs = []
     for event in klabs:
-        #If they're a participant
-
-        #If they've requested to join
-
-        #If they've been invited
-
-        #No connection to the klab
         allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def join_klab(request):
+    data = request.data
