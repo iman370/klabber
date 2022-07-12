@@ -4,13 +4,14 @@ import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 
 function JoinKlab({klab, myUser}) {
-  const [host, setHost] = useState(klab[0]);
-  const [klabDate, setDate] = useState(klab[1]);
-  const [klabTime, setTime] = useState(klab[2]);
-  const [place, setPlace] = useState(klab[3]);
-  const [description, setDescription] = useState(klab[4]);
-  const [maxSpaces, setMaxSpaces] = useState(klab[5]);
-  const [joinStatus, setJoinStatus] = useState(klab[6]);
+  const [klabId, setklabId] = useState(klab[0]);
+  const [host, setHost] = useState(klab[1]);
+  const [klabDate, setDate] = useState(klab[2]);
+  const [klabTime, setTime] = useState(klab[3]);
+  const [place, setPlace] = useState(klab[4]);
+  const [description, setDescription] = useState(klab[5]);
+  const [maxSpaces, setMaxSpaces] = useState(klab[6]);
+  const [joinStatus, setJoinStatus] = useState(klab[7]);
 
   const [joinButton, setJoinButton] = useState("Request to Join");
 

@@ -56,21 +56,21 @@ def get_all_klabs(request):
     for event in klabs:
         #If they're a participant
         if (participant.objects.filter(klab=event, userId=myId).exists()):
-            allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 1])
+            allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 1])
             continue
 
         #If they've requested to join
         if (joinRequest.objects.filter(klab=event, userId=myId).exists()):
-            allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 2])
+            allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 2])
             continue
 
         #If they've been invited
         if (inviteRequest.objects.filter(klab=event, senderID=myId).exists()):
-            allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 3])
+            allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 3])
             continue
 
         #No connection to the klab
-        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 0])
+        allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 0])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
 
@@ -89,3 +89,11 @@ def get_my_klabs(request):
 @api_view(['POST'])
 def join_klab(request):
     data = request.data
+
+@api_view(['POST'])
+def respond_to_join_request(request):
+    data = request.data
+
+    #Accept request
+
+    #Reject request
