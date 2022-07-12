@@ -82,7 +82,7 @@ def get_my_klabs(request):
     klabs = klab.objects.get(userId=myId)
     allKlabs = []
     for event in klabs:
-        allKlabs.append([event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
+        allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
 
@@ -91,9 +91,19 @@ def join_klab(request):
     data = request.data
 
 @api_view(['POST'])
-def respond_to_join_request(request):
+def respond_to_invite_request(request):
     data = request.data
+    klabId = data['klabid']
+    myUsername = data['myUsername']
+    senderUsername = data['senderUsername']
+    reply = data['reply']
 
-    #Accept request
-
-    #Reject request
+    if (inviteRequest.objects.filter(klab=klabId, klabHostID=myUsername.id, senderID=senderUsername.id).exists()):
+        inviteRequest.objects.filter(klab=klabId, klabHostID=myUsername.id, senderID=senderUsername.id).delete()
+        if (reply=='accept'):
+            serializer = ParticipantSerializer(data={'klab':klabId,'userId':senderUsername.id})
+            if serializer.is_valid():
+                serializer.save()
+                return Response('accepted', status=status.HTTP_200_OK)
+    
+    return Response('rejected', status=status.HTTP_200_OK)
