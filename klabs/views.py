@@ -105,5 +105,6 @@ def respond_to_invite_request(request):
             if serializer.is_valid():
                 serializer.save()
                 return Response('accepted', status=status.HTTP_200_OK)
-    
-    return Response('rejected', status=status.HTTP_200_OK)
+        else:
+            return Response('rejected', status=status.HTTP_200_OK)
+    return Response('error', status=status.HTTP_200_OK)
