@@ -19,4 +19,4 @@ class JoinReqSerializer(serializers.ModelSerializer):
 class InviteSerializer(serializers.ModelSerializer):
     class Meta:
         model = joinRequest
-        fields = ('klab','hostId','userId')
+        fields = ('klab','klabHostID','receiverID')

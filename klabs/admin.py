@@ -11,7 +11,7 @@ class JoinRequestAdmin(admin.ModelAdmin):
     list_display = ('klab','hostId','userId')
 
 class InviteRequestAdmin(admin.ModelAdmin):
-    list_display = ('klab','klabHostID','senderID')
+    list_display = ('klab','klabHostID','receiverID')
 
 
 admin.site.register(klab, KlabAdmin)

@@ -65,7 +65,7 @@ def get_all_klabs(request):
             continue
 
         #If they've been invited
-        if (inviteRequest.objects.filter(klab=event, senderID=myId).exists()):
+        if (inviteRequest.objects.filter(klab=event,receiverID=myId).exists()):
             allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.remainingSpaces, 3])
             continue
 
@@ -88,6 +88,7 @@ def get_my_klabs(request):
 
 @api_view(['POST'])
 def join_klab(request):
+    #Returns joinStatus and remainingSpaces
     data = request.data
     klabId = data['klabId']
     theKlab = klab.objects.get(id=klabId)
@@ -100,7 +101,7 @@ def join_klab(request):
         if (participant.objects.filter(klab=theKlab, userId=userId).exists()):
             participant.objects.filter(klab=theKlab, userId=userId).delete()
             #Add 1 to the remaining spaces
-
+            
             return Response(0, status=status.HTTP_200_OK)
     #If user has already sent a join request (code:2)
     elif (joinStatus==2):
@@ -128,22 +129,3 @@ def join_klab(request):
             return Response(2, status=status.HTTP_200_OK)
         return Response(0, status=status.HTTP_400_BAD_REQUEST)
     return Response(joinStatus, status=status.HTTP_400_BAD_REQUEST)
-
-@api_view(['POST'])
-def respond_to_invite_request(request): #Done by receiver user
-    data = request.data
-    klabId = data['klabid']
-    myUsername = data['myUsername']
-    senderUsername = data['senderUsername']
-    reply = data['reply']
-#Modify remaining spaces
-    if (inviteRequest.objects.filter(klab=klabId, klabHostID=myUsername.id, senderID=senderUsername.id).exists()):
-        inviteRequest.objects.filter(klab=klabId, klabHostID=myUsername.id, senderID=senderUsername.id).delete()
-        if (reply=='accept'):
-            serializer = ParticipantSerializer(data={'klab':klabId,'userId':senderUsername.id})
-            if serializer.is_valid():
-                serializer.save()
-                return Response('accepted', status=status.HTTP_200_OK)
-        else:
-            return Response('rejected', status=status.HTTP_200_OK)
-    return Response('error', status=status.HTTP_404_NOT_FOUND)
