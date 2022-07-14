@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/post-klab/', views.post_klab, name="post_klab"),
     path('find-klabs/',TemplateView.as_view(template_name='index.html')),
     path('api/get-all-klabs', views.get_all_klabs, name="get_all_klabs"),
+    path('api/join-klab/', views.join_klab, name="join_klab"),
 ]   

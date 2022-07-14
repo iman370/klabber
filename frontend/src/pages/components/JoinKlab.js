@@ -46,6 +46,28 @@ function JoinKlab({klab, myUser}) {
         return cookieValue;
     }
 
+    const sendJoinReq = () => {
+      var url = 'http://127.0.0.1:8000/api/join-klab/'
+      var csrftoken = getCookie('csrftoken')
+      fetch(url, {
+          method: 'POST',
+          headers: {
+              'Content-type': 'application/json',
+              'X-CSRFToken': csrftoken,
+          },
+          body: JSON.stringify({'klabId':klabId,'username':myUser,'joinStatus':joinStatus})
+      }).then((res) => {
+          console.log(res)
+          if (res.ok) {
+              return res.json()
+          }
+      }).then((data) => { //NEED TO UPDATE TO ADD TAKEN SPACES
+        console.log(data)
+        setJoinStatus(0)
+        setJoinStatus(data)
+    }, [joinStatus])
+    }
+
     return (
         <Card sx={{
             width: 345,
@@ -69,7 +91,7 @@ function JoinKlab({klab, myUser}) {
               borderRadius: '20px',
               bgcolor: '#1B1B1E',
               color: '#D8DBE2',
-            }}>{joinButton}</Button>
+            }} onClick={() => {sendJoinReq()}}>{joinButton}</Button>
           </Card>
     )
     
