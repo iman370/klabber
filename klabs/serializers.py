@@ -4,7 +4,7 @@ from .models import klab, participant, joinRequest, inviteRequest
 class KlabSerializer(serializers.ModelSerializer):
     class Meta:
         model = klab
-        fields = ('userId','date','time','place','description','maxSpaces', 'remainingSpaces')
+        fields = ('userId','date','time','place','description','maxSpaces', 'takenSpaces')
 
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:

@@ -11,7 +11,7 @@ function JoinKlab({klab, myUser}) {
   const [place, setPlace] = useState(klab[4]);
   const [description, setDescription] = useState(klab[5]);
   const [maxSpaces, setMaxSpaces] = useState(klab[6]);
-  const [remainingSpaces, setRemSpaces] = useState(klab[7]);
+  const [takenSpaces, setTakenSpaces] = useState(klab[7]);
   const [joinStatus, setJoinStatus] = useState(klab[8]);
 
   const [joinButton, setJoinButton] = useState("Request to Join");

@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import klab, participant, joinRequest, inviteRequest
 
 class KlabAdmin(admin.ModelAdmin):
-    list_display = ('userId','date','time','place','description','maxSpaces', 'remainingSpaces')
+    list_display = ('userId','date','time','place','description','maxSpaces', 'takenSpaces')
 
 class ParticipantAdmin(admin.ModelAdmin):
     list_display = ('klab','userId')
