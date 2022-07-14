@@ -2,7 +2,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 from .models import inviteRequest, joinRequest, klab, participant
-from .serializers import KlabSerializer, ParticipantSerializer
+from .serializers import InviteSerializer, JoinReqSerializer, KlabSerializer, ParticipantSerializer
 
 import datetime
 
@@ -89,9 +89,42 @@ def get_my_klabs(request):
 @api_view(['POST'])
 def join_klab(request):
     data = request.data
+    klabId = data['klabId']
+    theKlab = klab.objects.get(id=klabId)
+    username = data['username']
+    userId = User.objects.get(username=username).id
+    joinStatus = data['joinStatus']
+
+    #If user is already a participant (code:1)
+    if (joinStatus==1):
+        if (participant.objects.filter(klab=theKlab, userId=userId).exists()):
+            participant.objects.filter(klab=theKlab, userId=userId).delete()
+            return Response(0, status=status.HTTP_200_OK)
+    #If user has already sent a join request (code:2)
+    elif (joinStatus==2):
+        if (joinRequest.objects.filter(klab=theKlab,userId=userId).exists()):
+            joinRequest.objects.filter(klab=theKlab,userId=userId).delete()
+            return Response(0, status=status.HTTP_200_OK)
+    #If user has already been invited (code:3)
+    elif (joinStatus==3):
+        if (inviteRequest.objects.filter(klab=theKlab, receiverID=userId).exists()):
+            serializer = ParticipantSerializer(data={'klab':theKlab,'userId':userId})
+            if serializer.is_valid():
+                serializer.save()
+                inviteRequest.objects.filter(klab=theKlab, receiverID=userId).delete()
+                return Response(1, status=status.HTTP_200_OK)
+            return Response(3, status=status.HTTP_400_BAD_REQUEST)
+    #Send a join request (code:0)
+    elif(joinStatus==0):
+        serializer = JoinReqSerializer(data={'klab':theKlab,'hostId':theKlab.userId,'userId':userId})
+        if serializer.is_valid():
+            serializer.save()
+            return Response(2, status=status.HTTP_200_OK)
+        return Response(0, status=status.HTTP_400_BAD_REQUEST)
+    return Response(joinStatus, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
-def respond_to_invite_request(request):
+def respond_to_invite_request(request): #Done by receiver user
     data = request.data
     klabId = data['klabid']
     myUsername = data['myUsername']
@@ -107,4 +140,4 @@ def respond_to_invite_request(request):
                 return Response('accepted', status=status.HTTP_200_OK)
         else:
             return Response('rejected', status=status.HTTP_200_OK)
-    return Response('error', status=status.HTTP_200_OK)
+    return Response('error', status=status.HTTP_404_NOT_FOUND)
