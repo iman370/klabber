@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import JoinReqCard from './components/JoinReqCard';
 
 // Join requests = when people ask to be in your klab
 // Invite requests = when someone invites you to their klab
@@ -17,6 +18,58 @@ function KlabInvites() {
     // 1 = show invite requests
     const [showInvites, setShowInvites] = useState(0);
 
+    useEffect(() => {
+        let mounted = true;
+        if (showInvites === 0) {
+            setRequests([])
+            getJoinRequests()
+        } else if (showInvites === 1) {
+            setRequests([])
+            getInviteRequests()
+        }
+        return () => mounted = false;
+    }, [showInvites])
+
+    const getJoinRequests = () => {
+        fetch('http://127.0.0.1:8000/api/get-join-requests?username='+username, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify()
+        }).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then((data) => {
+            if (data.length === 0) {
+                setRequests(['No Requests.'])
+            } else {
+                setRequests(data)
+            }
+        }, [requests])
+    }
+
+    const getInviteRequests = () => {
+        fetch('http://127.0.0.1:8000/api/get-invite-requests?username='+username, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify()
+        }).then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+        }).then((data) => {
+            if (data.length === 0) {
+                setRequests(['No Requests.'])
+            } else {
+                setRequests(data)
+            }
+        }, [requests])
+    }
+      
     return (
         <div id="KlabInvites-content">
             <div id="buttonsbox">
@@ -28,21 +81,21 @@ function KlabInvites() {
             <div className="divider"/>
             <div id="klabs-container">
                 {requests.map(function(item){
-                        if (item == 'No Requests.') {
-                            return(
-                                <h1>No Requests.</h1>
-                            )
-                        }
-                        if (showInvites === 0) {
-                            return(
-                                <><h1>Join Requests</h1><h1>Nothing available yet.</h1></>
-                            )
-                        } else {
-                            return (
-                                <><h1>Invite Requests</h1><h1>Nothing available yet.</h1></>
-                            )
-                        }
-                    })}
+                    if (item == 'No Requests.') {
+                        return(
+                            <h1>No Requests.</h1>
+                        )
+                    }
+                    if (showInvites === 0) {
+                        return(
+                            <JoinReqCard klab={item} myUser={username}/>
+                        )
+                    } else {
+                        return (
+                            <><h1>Invite Requests</h1><h1>Nothing available yet.</h1></>
+                        )
+                    }
+                })}
             </div>
         </div>
     )

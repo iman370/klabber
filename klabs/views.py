@@ -8,6 +8,8 @@ import datetime
 
 from rest_framework.decorators import api_view
 
+from klabs import serializers
+
 #KLAB CODES
 # 0 - Not apart of the klab
 # 1 - Joined the klab
@@ -144,3 +146,99 @@ def klabs_im_attending(request):
         allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.takenSpaces, 1])
 
     return Response(allKlabs, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def get_join_requests(request):
+    myUsername = request.GET.get('username','')
+    myId = User.objects.get(username=myUsername).id
+
+    getRequests = joinRequest.objects.filter(hostId=myId)
+
+    allRequests = []
+    for item in getRequests:
+        theKlab = klab.objects.get(id=item.klab.id)
+        allRequests.append([item.userId,theKlab.id,theKlab.date,theKlab.time,theKlab.place,theKlab.description,theKlab.maxSpaces,theKlab.takenSpaces])
+
+    return Response(allRequests, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def get_invite_requests(request):
+    myUsername = request.GET.get('username','')
+    myId = User.objects.get(username=myUsername).id
+
+    getRequests = inviteRequest.objects.filter(klabHostID=myId)
+
+    allRequests = []
+    for item in getRequests:
+        theKlab = klab.objects.get(id=item.klab.id)
+        allRequests.append([item.receiverID,theKlab.id,theKlab.date,theKlab.time,theKlab.place,theKlab.description,theKlab.maxSpaces,theKlab.takenSpaces])
+
+    return Response(allRequests, status=status.HTTP_200_OK)
+
+@api_view(['POST'])
+def accept_invite(request):
+    data = request.data
+    klabId = data['klabId']
+    hostId = data['hostId']
+    userId = data['userId']
+
+    if (inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).exists()):
+        theKlab = klab.objects.get(id=klabId)
+        if (theKlab.takenSpaces == theKlab.maxSpaces):
+            return Response('full', status=status.HTTP_200_OK)
+        else:
+            serializer = ParticipantSerializer(data={'klab':klabId,'userId':userId})
+            if serializer.is_valid():
+                serializer.save()
+                #Add 1 to the taken spaces
+                theKlab.takenSpaces = theKlab.takenSpaces + 1
+                theKlab.save(update_fields=['takenSpaces'])
+                inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).delete()
+                return Response('accepted', status=status.HTTP_200_OK)
+    return Response('error', status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def reject_invite(request):
+    data = request.data
+    klabId = data['klabId']
+    hostId = data['hostId']
+    userId = data['userId']
+
+    if (inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).exists()):
+        inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).delete()
+        return Response('rejected', status=status.HTTP_200_OK)
+    return Response('error', status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def accept_join_req(request):
+    data = request.data
+    klabId = data['klabId']
+    hostId = data['hostId']
+    userId = data['userId']
+
+    if (joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).exists()):
+        theKlab = klab.objects.get(id=klabId)
+        if (theKlab.takenSpaces == theKlab.maxSpaces):
+            return Response('full', status=status.HTTP_200_OK)
+        else:
+            serializer = ParticipantSerializer(data={'klab':klabId,'userId':userId})
+            if serializer.is_valid():
+                serializer.save()
+                #Add 1 to the taken spaces
+                theKlab.takenSpaces = theKlab.takenSpaces + 1
+                theKlab.save(update_fields=['takenSpaces'])
+                joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).delete()
+                return Response('accepted', status=status.HTTP_200_OK)
+    return Response('error', status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['DELETE'])
+def reject_join_req(request):
+    data = request.data
+    klabId = data['klabId']
+    hostId = data['hostId']
+    userId = data['userId']
+
+    if (joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).exists()):
+        joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).delete()
+        return Response('rejected', status=status.HTTP_200_OK)
+    return Response('error', status=status.HTTP_400_BAD_REQUEST)

@@ -12,4 +12,6 @@ urlpatterns = [
     path('api/get-my-klabs', views.get_my_klabs, name="get_my_klabs"),
     path('api/get-klabs-im-attending', views.klabs_im_attending, name="klabs_im_attending"),
     path('klab-invites/',TemplateView.as_view(template_name='index.html')),
+    path('api/get-join-requests', views.get_join_requests, name="get_join_requests"),
+    path('api/get-invite-requests', views.get_invite_requests, name="get_invite_requests"),
 ]   

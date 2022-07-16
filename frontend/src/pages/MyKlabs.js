@@ -27,7 +27,7 @@ function MyKlabs() {
             getAttendingKlabs()
         }
         return () => mounted = false;
-      }, [showMyKlabs])
+    }, [showMyKlabs])
 
     const getMyKlabs = () => {
         fetch('http://127.0.0.1:8000/api/get-my-klabs?username='+username, {
