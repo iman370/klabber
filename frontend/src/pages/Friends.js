@@ -51,7 +51,6 @@ function Friends(props) {
             }
         }, [userList])
     }
-
     
     const getAllFriends = () => {
         fetch('http://127.0.0.1:8000/api/get-all-friends?username='+username, {

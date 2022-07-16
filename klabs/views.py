@@ -131,4 +131,16 @@ def join_klab(request):
             return Response(2, status=status.HTTP_200_OK)
         return Response(0, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+def klabs_im_attending(request):
+    myUsername = request.GET.get('username','')
+    myId = User.objects.get(username=myUsername).id
 
+    attendingKlabs = participant.objects.filter(userId=myId)
+
+    allKlabs = []
+    for item in attendingKlabs:
+        event = klab.objects.get(id=item.klab.id)
+        allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.takenSpaces, 1])
+
+    return Response(allKlabs, status=status.HTTP_200_OK)
