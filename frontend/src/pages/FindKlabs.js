@@ -35,7 +35,6 @@ function FindKlab() {
             if (data.length === 0) {
                 setKlabs(['No klabs available.'])
             } else {
-                setKlabs([])
                 setKlabs(data)
             }
         }, [klabs])

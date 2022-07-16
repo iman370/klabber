@@ -90,55 +90,47 @@ def get_my_klabs(request):
 def join_klab(request):
     #Returns joinStatus and takenSpaces MAKE SURE YOU ADD THISSS
     data = request.data
-    print(data)
+    print(data) #REMOVEEEE
     klabId = data['klabId']
     theKlab = klab.objects.get(id=klabId)
     username = data['username']
     userId = User.objects.get(username=username).id
-    joinStatus = data['joinStatus']
-
-    print(klabId)
-    print(username)
-    print(joinStatus)
 
     #If user is already a participant (code:1)
-    if (joinStatus==1):
-        if (participant.objects.filter(klab=theKlab, userId=userId).exists()):
-            participant.objects.filter(klab=theKlab, userId=userId).delete()
-            #Minus 1 to the raken spaces
-            serializer = KlabSerializer(instance = klab, data = {'userId':theKlab.userId,'date':theKlab.date,'time':theKlab.time,'place':theKlab.place,'description':theKlab.description,'maxSpaces':theKlab.maxSpaces,'takenSpaces':theKlab.takenSpaces})
-            if serializer.is_valid():
-                theKlab.takenSpaces = theKlab.takenSpaces - 1
-                theKlab.save(update_fields=['takenSpaces'])
-            return Response(0, status=status.HTTP_200_OK)
-    #If user has already sent a join request (code:2)
-    elif (joinStatus==2):
-        if (joinRequest.objects.filter(klab=theKlab,userId=userId).exists()):
-            joinRequest.objects.filter(klab=theKlab,userId=userId).delete()
-            return Response(0, status=status.HTTP_200_OK)
-    #If user has already been invited (code:3)
-    elif (joinStatus==3):
-        if (inviteRequest.objects.filter(klab=theKlab, receiverID=userId).exists()):
-            serializer = ParticipantSerializer(data={'klab':theKlab,'userId':userId})
-            if serializer.is_valid():
-                inviteRequest.objects.filter(klab=theKlab, receiverID=userId).delete()
-                #Check if full
-                if (theKlab.takenSpaces == theKlab.maxSpaces):
-                    return Response(0, status=status.HTTP_200_OK)
-                else: #Else add 1 to the taken spaces
-                    serializer.save()
-                    theKlab.takenSpaces = theKlab.takenSpaces + 1
-                    theKlab.save(update_fields=['takenSpaces'])
-                    return Response(1, status=status.HTTP_200_OK)
-            return Response(3, status=status.HTTP_400_BAD_REQUEST)
-    #Send a join request (code:0)
-    elif(joinStatus==0):
-        #Check if full
-        if (theKlab.takenSpaces == theKlab.maxSpaces):
-            return Response(0, status=status.HTTP_200_OK)
-        serializer = JoinReqSerializer(data={'klab':theKlab,'hostId':theKlab.userId,'userId':userId})
+    if (participant.objects.filter(klab=theKlab, userId=userId).exists()):
+        participant.objects.filter(klab=theKlab, userId=userId).delete()
+        #Minus 1 to the raken spaces
+        serializer = KlabSerializer(instance = klab, data = {'userId':theKlab.userId,'date':theKlab.date,'time':theKlab.time,'place':theKlab.place,'description':theKlab.description,'maxSpaces':theKlab.maxSpaces,'takenSpaces':theKlab.takenSpaces})
         if serializer.is_valid():
-            serializer.save()
+            theKlab.takenSpaces = theKlab.takenSpaces - 1
+            theKlab.save(update_fields=['takenSpaces'])
+        return Response(0, status=status.HTTP_200_OK)
+    #If user has already sent a join request (code:2)
+    elif (joinRequest.objects.filter(klab=theKlab,userId=userId).exists()):
+        joinRequest.objects.filter(klab=theKlab,userId=userId).delete()
+        return Response(0, status=status.HTTP_200_OK)
+    #If user has already been invited (code:3)
+    elif (inviteRequest.objects.filter(klab=theKlab, receiverID=userId).exists()):
+        serializer = ParticipantSerializer(data={'klab':klabId,'userId':userId})
+        if serializer.is_valid():
+            inviteRequest.objects.filter(klab=theKlab, receiverID=userId).delete()
+            #Check if full
+            if (theKlab.takenSpaces == theKlab.maxSpaces):
+                return Response(0, status=status.HTTP_200_OK)
+            else: #Else add 1 to the taken spaces
+                serializer.save()
+                theKlab.takenSpaces = theKlab.takenSpaces + 1
+                theKlab.save(update_fields=['takenSpaces'])
+                return Response(1, status=status.HTTP_200_OK)
+        return Response(3, status=status.HTTP_400_BAD_REQUEST)
+    #Send a join request (code:0)
+    else:
+        #Check if full
+        if (theKlab.takenSpaces >= theKlab.maxSpaces):
+            return Response(0, status=status.HTTP_200_OK)
+        theHostId = User.objects.get(id=theKlab.userId.id).id
+        joinSerializer = JoinReqSerializer(data={'klab':klabId,'hostId':theHostId,'userId':userId})
+        if joinSerializer.is_valid():
+            joinSerializer.save()
             return Response(2, status=status.HTTP_200_OK)
         return Response(0, status=status.HTTP_400_BAD_REQUEST)
-    return Response(joinStatus, status=status.HTTP_400_BAD_REQUEST)

@@ -46,7 +46,8 @@ function JoinKlab({klab, myUser}) {
         return cookieValue;
     }
 
-    const sendJoinReq = () => {
+    const sendJoinReq = (klabid, myuser, joinstatus) => {
+      console.log(joinstatus)
       var url = 'http://127.0.0.1:8000/api/join-klab/'
       var csrftoken = getCookie('csrftoken')
       fetch(url, {
@@ -55,7 +56,7 @@ function JoinKlab({klab, myUser}) {
               'Content-type': 'application/json',
               'X-CSRFToken': csrftoken,
           },
-          body: JSON.stringify({'klabId':klabId,'username':myUser,'joinStatus':joinStatus})
+          body: JSON.stringify({'klabId':klabid,'username':myuser})
       }).then((res) => {
           console.log(res)
           if (res.ok) {
@@ -91,7 +92,7 @@ function JoinKlab({klab, myUser}) {
               borderRadius: '20px',
               bgcolor: '#1B1B1E',
               color: '#D8DBE2',
-            }} onClick={() => {sendJoinReq()}}>{joinButton}</Button>
+            }} onClick={() => {sendJoinReq(klabId, myUser, joinStatus)}}>{joinButton}</Button>
           </Card>
     )
     
