@@ -12,6 +12,8 @@ import Settings from './pages/Settings';
 import Friends from './pages/Friends';
 import CreateKlab from "./pages/CreateKlab";
 import FindKlab from "./pages/FindKlabs";
+import MyKlabs from "./pages/MyKlabs";
+import KlabInvites from "./pages/KlabInvites";
 
 const App = () => {
   let routes = useRoutes([
@@ -23,6 +25,7 @@ const App = () => {
     { path: "/friends", element: <Friends /> },
     { path: "/create-klab", element: <CreateKlab /> },
     { path: "/find-klabs", element: <FindKlab /> },
+    { path: "/klab-invites", element: <KlabInvites /> },
   ]);
   return routes;
 };

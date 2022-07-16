@@ -63,8 +63,6 @@ function JoinKlab({klab, myUser}) {
               return res.json()
           }
       }).then((data) => { //NEED TO UPDATE TO ADD TAKEN SPACES
-        console.log(data)
-        setJoinStatus(0)
         setJoinStatus(data)
     }, [joinStatus])
     }

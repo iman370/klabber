@@ -42,10 +42,6 @@ def post_klab(request):
 
     return Response((), status=status.HTTP_400_BAD_REQUEST)
 
-#NOTES
-#Add event.id
-#Fix this code (it shows Accept Invite instead of Join)
-
 @api_view(['GET'])
 def get_all_klabs(request):
     myUsername = request.GET.get('username','')
@@ -134,3 +130,5 @@ def join_klab(request):
             joinSerializer.save()
             return Response(2, status=status.HTTP_200_OK)
         return Response(0, status=status.HTTP_400_BAD_REQUEST)
+
+

@@ -34,6 +34,8 @@ function Home() {
                 <div id="klabsButtonBox">
                     <Button onClick={() => navigate('../create-klab',{state:{username,first_name,email}})}>Create Klab</Button>
                     <Button onClick={() => navigate('../find-klabs',{state:{username,first_name,email}})}>Find Klab</Button>
+                    <Button onClick={() => navigate('../my-klabs',{state:{username,first_name,email}})}>My Klabs</Button>
+                    <Button onClick={() => navigate('../klab-invites',{state:{username,first_name,email}})}>Invites and Requests</Button>
                 </div>
                 <div className='divider'/>
                 <Box id="upcomingKlabsBox">
