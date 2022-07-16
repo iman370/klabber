@@ -586,3 +586,36 @@ h2 {
     justify-items: center;
     align-items: center;
 }
+
+/* KLAB INVITES AND REQUESTS PAGE */
+
+#KlabInvites-content {
+    display: block;
+    margin: 2rem auto;
+    justify-content: center;
+}
+
+#KlabInvites-content #buttonsbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#KlabInvites-content #buttonsbox Button {
+    align-self: stretch;
+    text-align: center;
+    font-size: 24px;
+    color: #58A4B0;
+}
+
+#KlabInvites-content #klabs-container {
+    display: grid;
+    max-width: 1170px;
+    margin: 0 auto;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
