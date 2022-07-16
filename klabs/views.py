@@ -75,7 +75,7 @@ def get_my_klabs(request):
     myUsername = request.GET.get('username','')
     myId = User.objects.get(username=myUsername).id
 
-    klabs = klab.objects.get(userId=myId)
+    klabs = klab.objects.filter(userId=myId)
     allKlabs = []
     for event in klabs:
         allKlabs.append([event.id, event.userId.username, event.date, event.time, event.place, event.description, event.maxSpaces, event.takenSpaces])

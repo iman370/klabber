@@ -25,6 +25,7 @@ const App = () => {
     { path: "/friends", element: <Friends /> },
     { path: "/create-klab", element: <CreateKlab /> },
     { path: "/find-klabs", element: <FindKlab /> },
+    { path: "/my-klabs", element: <MyKlabs /> },
     { path: "/klab-invites", element: <KlabInvites /> },
   ]);
   return routes;
