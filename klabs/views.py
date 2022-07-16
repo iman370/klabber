@@ -157,7 +157,7 @@ def get_join_requests(request):
     allRequests = []
     for item in getRequests:
         theKlab = klab.objects.get(id=item.klab.id)
-        allRequests.append([item.userId,theKlab.id,theKlab.date,theKlab.time,theKlab.place,theKlab.description,theKlab.maxSpaces,theKlab.takenSpaces])
+        allRequests.append([item.userId.username,theKlab.id,theKlab.date,theKlab.time,theKlab.place,theKlab.description,theKlab.maxSpaces,theKlab.takenSpaces])
 
     return Response(allRequests, status=status.HTTP_200_OK)
 
@@ -171,7 +171,7 @@ def get_invite_requests(request):
     allRequests = []
     for item in getRequests:
         theKlab = klab.objects.get(id=item.klab.id)
-        allRequests.append([item.receiverID,theKlab.id,theKlab.date,theKlab.time,theKlab.place,theKlab.description,theKlab.maxSpaces,theKlab.takenSpaces])
+        allRequests.append([item.receiverID.username,theKlab.id,theKlab.date,theKlab.time,theKlab.place,theKlab.description,theKlab.maxSpaces,theKlab.takenSpaces])
 
     return Response(allRequests, status=status.HTTP_200_OK)
 
@@ -179,8 +179,10 @@ def get_invite_requests(request):
 def accept_invite(request):
     data = request.data
     klabId = data['klabId']
-    hostId = data['hostId']
-    userId = data['userId']
+    host = data['hostId']
+    hostId = User.objects.get(username=host).id
+    username = data['username']
+    userId = User.objects.get(username=username).id
 
     if (inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).exists()):
         theKlab = klab.objects.get(id=klabId)
@@ -201,8 +203,10 @@ def accept_invite(request):
 def reject_invite(request):
     data = request.data
     klabId = data['klabId']
-    hostId = data['hostId']
-    userId = data['userId']
+    host = data['hostId']
+    hostId = User.objects.get(username=host).id
+    username = data['username']
+    userId = User.objects.get(username=username).id
 
     if (inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).exists()):
         inviteRequest.objects.filter(klab=klabId,klabHostID=hostId,receiverID=userId).delete()
@@ -213,8 +217,10 @@ def reject_invite(request):
 def accept_join_req(request):
     data = request.data
     klabId = data['klabId']
-    hostId = data['hostId']
-    userId = data['userId']
+    host = data['hostId']
+    hostId = User.objects.get(username=host).id
+    username = data['username']
+    userId = User.objects.get(username=username).id
 
     if (joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).exists()):
         theKlab = klab.objects.get(id=klabId)
@@ -235,8 +241,10 @@ def accept_join_req(request):
 def reject_join_req(request):
     data = request.data
     klabId = data['klabId']
-    hostId = data['hostId']
-    userId = data['userId']
+    host = data['hostId']
+    hostId = User.objects.get(username=host).id
+    username = data['username']
+    userId = User.objects.get(username=username).id
 
     if (joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).exists()):
         joinRequest.objects.filter(klab=klabId,hostId=hostId,userId=userId).delete()

@@ -14,4 +14,8 @@ urlpatterns = [
     path('klab-invites/',TemplateView.as_view(template_name='index.html')),
     path('api/get-join-requests', views.get_join_requests, name="get_join_requests"),
     path('api/get-invite-requests', views.get_invite_requests, name="get_invite_requests"),
-]   
+    path('api/accept-invite/', views.accept_invite, name="accept_invite"),
+    path('api/reject-invite/', views.reject_invite, name="reject_invite"),
+    path('api/accept-join-req/', views.accept_join_req, name="accept_join_req"),
+    path('api/reject-join-req/', views.reject_join_req, name="reject_join_req"),
+]

@@ -15,6 +15,42 @@ function JoinReqCard({klab, myUser}) {
 
   const [multipleButtons, setMultipleButtons] = useState(true);
 
+  const getCookie = (name) => {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+  const acceptJoinReq = () => {
+    var url = 'http://127.0.0.1:8000/api/accept-join-req/'
+    var csrftoken = getCookie('csrftoken')
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'X-CSRFToken': csrftoken,
+        },
+        body: JSON.stringify({'klabId':klabId, 'hostId': myUser, 'username':user})
+    }).then((res) => {
+        console.log(res)
+        if (res.ok) {
+            return res.json()
+        }
+    }).then((data) => {
+      setMultipleButtons(false)
+  }, [multipleButtons])
+  }
+
     return (
         <Card sx={{
             width: 345,
@@ -29,8 +65,8 @@ function JoinReqCard({klab, myUser}) {
               sx={{
                 color:'azure',
               }}
-              title={description}
-              subheader={"Date: "+klabDate+"   Time: "+klabTime}
+              title={"Join Request from: "+user}
+              subheader={"Date: "+klabDate+"\nTime: "+klabTime}
             />
             <Button sx={{
               display: 'inline',
@@ -38,7 +74,7 @@ function JoinReqCard({klab, myUser}) {
               borderRadius: '20px',
               bgcolor: '#1B1B1E',
               color: '#D8DBE2',
-            }}>{joinButton}</Button>
+            }} onClick={() => {acceptJoinReq()}}>Accept</Button>
           </Card>
     )
     
