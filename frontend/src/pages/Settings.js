@@ -29,7 +29,7 @@ function Settings() {
     }
 
     const updateNickname = (nickname) => {
-        var url = 'http://127.0.0.1:8000/api/update-nickname/'
+        var url = '/api/update-nickname/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'PUT',
@@ -47,7 +47,7 @@ function Settings() {
     }
 
     const updateEmail = (newEmail) => {
-        var url = 'http://127.0.0.1:8000/api/update-email/'
+        var url = '/api/update-email/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'PUT',
@@ -65,7 +65,7 @@ function Settings() {
     }
 
     const updatePassword = (password, newPassword, newPassword1) => {
-        var url = 'http://127.0.0.1:8000/api/update-password/'
+        var url = '/api/update-password/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'PUT',

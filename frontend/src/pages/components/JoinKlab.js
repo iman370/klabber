@@ -48,7 +48,7 @@ function JoinKlab({klab, myUser}) {
 
     const sendJoinReq = (klabid, myuser, joinstatus) => {
       console.log(joinstatus)
-      var url = 'http://127.0.0.1:8000/api/join-klab/'
+      var url = '/api/join-klab/'
       var csrftoken = getCookie('csrftoken')
       fetch(url, {
           method: 'POST',

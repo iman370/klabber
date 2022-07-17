@@ -42,7 +42,7 @@ function OtherUserCard({user, myUser}) {
 }
 
 const sendFriendReq = (myuser, username) => {
-  var url = 'http://127.0.0.1:8000/api/friend/'
+  var url = '/api/friend/'
   var csrftoken = getCookie('csrftoken')
   fetch(url, {
       method: 'POST',

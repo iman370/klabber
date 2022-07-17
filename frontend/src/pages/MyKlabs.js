@@ -28,7 +28,7 @@ function MyKlabs() {
     }, [showMyKlabs])
 
     const getMyKlabs = () => {
-        fetch('http://127.0.0.1:8000/api/get-my-klabs?username='+username, {
+        fetch('/api/get-my-klabs?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -48,7 +48,7 @@ function MyKlabs() {
     }
 
     const getAttendingKlabs = () => {
-        fetch('http://127.0.0.1:8000/api/get-klabs-im-attending?username='+username, {
+        fetch('/api/get-klabs-im-attending?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',

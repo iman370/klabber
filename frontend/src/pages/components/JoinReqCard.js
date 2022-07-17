@@ -32,7 +32,7 @@ function JoinReqCard({klab, myUser}) {
 }
 
   const acceptJoinReq = () => {
-    var url = 'http://127.0.0.1:8000/api/accept-join-req/'
+    var url = '/api/accept-join-req/'
     var csrftoken = getCookie('csrftoken')
     fetch(url, {
         method: 'POST',

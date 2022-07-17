@@ -38,7 +38,7 @@ function StatusBox({username}) {
     }
 
     const postStatus = (text) => {
-        var url = 'http://127.0.0.1:8000/api/post-status/'
+        var url = '/api/post-status/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'POST',
@@ -58,7 +58,7 @@ function StatusBox({username}) {
     }
 
     const getStatuses = () => {
-        fetch('http://127.0.0.1:8000/api/get-statuses/', {
+        fetch('/api/get-statuses/', {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',

@@ -16,7 +16,7 @@ function FindKlab() {
       }, [])
 
     const getAllKlabs = () => {
-        fetch('http://127.0.0.1:8000/api/get-all-klabs?username='+username, {
+        fetch('/api/get-all-klabs?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',

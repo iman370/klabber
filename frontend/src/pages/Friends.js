@@ -33,7 +33,7 @@ function Friends() {
       }, [showFriends])
 
     const getAllUsers = () => {
-        fetch('http://127.0.0.1:8000/api/get-other-users?username='+username, {
+        fetch('/api/get-other-users?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -53,7 +53,7 @@ function Friends() {
     }
     
     const getAllFriends = () => {
-        fetch('http://127.0.0.1:8000/api/get-all-friends?username='+username, {
+        fetch('/api/get-all-friends?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -73,7 +73,7 @@ function Friends() {
     }
 
     const getIncomingRequests = () => {
-        fetch('http://127.0.0.1:8000/api/get-incoming-requests?username='+username, {
+        fetch('/api/get-incoming-requests?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',

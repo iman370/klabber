@@ -50,7 +50,7 @@ function SignUp() {
       }, [username,first_name, email])
       
     const signUp = (email, username, first_name, password, password1) => {
-        var url = 'http://127.0.0.1:8000/api/signup/'
+        var url = '/api/signup/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'POST',

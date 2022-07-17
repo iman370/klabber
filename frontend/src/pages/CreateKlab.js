@@ -27,7 +27,7 @@ function CreateKlab() {
     }
 
     const postKlab = (date, time, place, description, maxSpaces) => {
-        var url = 'http://127.0.0.1:8000/api/post-klab/'
+        var url = '/api/post-klab/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'POST',

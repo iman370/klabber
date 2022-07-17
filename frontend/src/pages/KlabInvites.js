@@ -31,7 +31,7 @@ function KlabInvites() {
     }, [showInvites])
 
     const getJoinRequests = () => {
-        fetch('http://127.0.0.1:8000/api/get-join-requests?username='+username, {
+        fetch('/api/get-join-requests?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',
@@ -51,7 +51,7 @@ function KlabInvites() {
     }
 
     const getInviteRequests = () => {
-        fetch('http://127.0.0.1:8000/api/get-invite-requests?username='+username, {
+        fetch('/api/get-invite-requests?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',

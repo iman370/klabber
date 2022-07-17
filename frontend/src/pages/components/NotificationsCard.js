@@ -14,7 +14,7 @@ function NotificationsCard ({username}) {
       }, [])
 
     const getNotifications = () => {
-        fetch('http://127.0.0.1:8000/api/get-incoming-requests?username='+username, {
+        fetch('/api/get-incoming-requests?username='+username, {
             method: 'GET',
             headers: {
                 'Content-type': 'application/json',

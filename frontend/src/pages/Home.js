@@ -19,7 +19,9 @@ function Home() {
     <div id="home-content">
         <div id="mainbox1">
             <div id="column1">
-                <MyProfileCard nickname={first_name} username={username} email={email} />
+                <div onClick={() => navigate('../settings',{state:{username,first_name,email}})}>
+                    <MyProfileCard nickname={first_name} username={username} email={email} />
+                </div>
                 <div className='divider' />
                 <NotificationsCard username={username} />
                 <div className='divider' />
