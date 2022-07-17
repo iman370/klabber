@@ -1,17 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
 import FlashMessage from './components/FlashMessage';
 import klabberLogo from '../images/klabber-logo.png';
 
-function SignUp(props) {
+function SignUp() {
     let navigate = useNavigate()
-    const location = useLocation();
 
     const isFirstRender = useRef(true)
 
-    const [userId, setUserId] = useState('');
     const [username, setUsername] = useState('');
     const [first_name, setFirstname] = useState('');
     const [email, setEmail] = useState('');
@@ -49,8 +46,8 @@ function SignUp(props) {
           isFirstRender.current = false // toggle flag after first render/mounting
           return;
         }
-        navigate(`../home`,{state:{userId,username, first_name, email}})
-      }, [userId,username,first_name, email])
+        navigate(`../home`,{state:{username, first_name, email}})
+      }, [username,first_name, email])
       
     const signUp = (email, username, first_name, password, password1) => {
         var url = 'http://127.0.0.1:8000/api/signup/'

@@ -2,12 +2,10 @@ import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import Typography from '@mui/material/Typography';
 import MyKlabsCard from './components/MyKlabsCard';
 import JoinKlab from './components/JoinKlab';
 
 function MyKlabs() {
-    let navigate = useNavigate();
     const location = useLocation();
     let username = location.state.username
 

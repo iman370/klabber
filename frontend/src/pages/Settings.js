@@ -1,10 +1,10 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
 import klabberLogo from '../images/klabber-logo.png';
 
-function Settings(props) {
+function Settings() {
     let navigate = useNavigate()
     const location = useLocation();
 

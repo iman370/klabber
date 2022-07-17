@@ -4,7 +4,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 import OtherUserCard from './components/OtherUserCard';
 import { useLocation } from 'react-router-dom';
 
-function Friends(props) {
+function Friends() {
     const location = useLocation();
     let username = location.state.username
 

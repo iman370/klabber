@@ -1,15 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import JoinKlab from './components/JoinKlab';
 
 function FindKlab() {
-    let navigate = useNavigate();
     const location = useLocation();
     let username = location.state.username
-    let first_name = location.state.first_name //remove
-    let email = location.state.email //remove
 
     const [klabs, setKlabs] = useState(['No klabs available.']);
 
