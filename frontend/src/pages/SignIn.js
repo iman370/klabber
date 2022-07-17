@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
+import FlashMessage from './components/FlashMessage';
 import klabberLogo from '../images/klabber-logo.png';
 
 function SignIn(props) {
@@ -10,6 +11,10 @@ function SignIn(props) {
     const [first_name, setFirstname] = useState('')
     const [email, setEmail] = useState('')
     const isFirstRender = useRef(true)
+
+    const [showFlashMessage, setShowFlashMessage] = React.useState(false)
+    const [flashMessageSuccess, setFlashMessageSuccess] = React.useState(false)
+    const [flashMessageText, setFlashMessageText] = React.useState('')
 
     let navigate = useNavigate()
 
@@ -29,6 +34,14 @@ function SignIn(props) {
         return cookieValue;
     }
 
+    const displayFlashMessage = (showGreen, text) => {
+        setFlashMessageSuccess(showGreen)
+        setFlashMessageText(text)
+        setShowFlashMessage(true)
+        window.scrollTo({top: 0, behavior: 'smooth'})
+        setTimeout(() => {setShowFlashMessage(false)}, 2000)
+    }
+
     useEffect(() => {
         if (isFirstRender.current) {
           isFirstRender.current = false // toggle flag after first render/mounting
@@ -38,7 +51,7 @@ function SignIn(props) {
       }, [username])
 
     const login = (username,password) => {
-        var url = 'https://klabber.vercel.app/api/login/'
+        var url = 'http://127.0.0.1:8000/api/login/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'POST',
@@ -52,6 +65,7 @@ function SignIn(props) {
                 return res.json()
             }
             else {
+                displayFlashMessage(false, 'Error. Check username/password details are correct')
             }
         }).then((data) => {
             setUsername(data.username)
@@ -76,6 +90,7 @@ function SignIn(props) {
         </div>
 
         <div id="signin-content">
+        {showFlashMessage ? <FlashMessage sendData={[showFlashMessage, flashMessageSuccess, flashMessageText]}/>:<FlashMessage sendData={[showFlashMessage, flashMessageSuccess, flashMessageText]}/> }
             <div id='mainbox1'>
                 <h2>Already have an account?</h2>
                 <h1>Sign in.</h1>

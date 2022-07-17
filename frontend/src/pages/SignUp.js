@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import Footer from './Footer';
+import FlashMessage from './components/FlashMessage';
 import klabberLogo from '../images/klabber-logo.png';
 
 function SignUp(props) {
@@ -14,6 +15,18 @@ function SignUp(props) {
     const [username, setUsername] = useState('');
     const [first_name, setFirstname] = useState('');
     const [email, setEmail] = useState('');
+
+    const [showFlashMessage, setShowFlashMessage] = React.useState(false)
+    const [flashMessageSuccess, setFlashMessageSuccess] = React.useState(false)
+    const [flashMessageText, setFlashMessageText] = React.useState('')
+
+    const displayFlashMessage = (showGreen, text) => {
+        setFlashMessageSuccess(showGreen)
+        setFlashMessageText(text)
+        setShowFlashMessage(true)
+        window.scrollTo({top: 0, behavior: 'smooth'})
+        setTimeout(() => {setShowFlashMessage(false)}, 2000)
+    }
 
     const getCookie = (name) => {
         var cookieValue = null;
@@ -55,6 +68,12 @@ function SignUp(props) {
                 return res.json()
             }
             else {
+                res.json().then(data => {
+                    if (data == 'email-exists') displayFlashMessage(false, 'Error. Email is already in use.')
+                    if (data == 'username-exists') displayFlashMessage(false, 'Error. Username is already taken.')
+                    if (data == 'empty-field') displayFlashMessage(false, 'Error. Missing data.')
+                    if (data == 'passwords-dont-match') displayFlashMessage(false, 'Error. Passwords don\'t match.')
+                })
             }
         }).then((data) => {
             setUsername(data.username)
@@ -79,6 +98,7 @@ function SignUp(props) {
         </div>
 
         <div id="signup-content">
+        {showFlashMessage ? <FlashMessage sendData={[showFlashMessage, flashMessageSuccess, flashMessageText]}/>:<FlashMessage sendData={[showFlashMessage, flashMessageSuccess, flashMessageText]}/> }
             <div id='mainbox1'>
                 <h2>Don't have an account?</h2>
                 <h1>Sign up.</h1>

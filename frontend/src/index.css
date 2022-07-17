@@ -619,3 +619,34 @@ h2 {
     justify-items: center;
     align-items: center;
 }
+
+/* FLASH MESSAGES */
+
+.flash-message-hidden {
+    opacity: 0;
+    transition: all 250ms linear 1s;
+}
+
+#flash-container-good {
+    width: 400px;
+    background-color: rgb(169, 248, 161);
+    position: absolute;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+    border: 3px solid rgb(122, 222, 111);
+    top: 13%;
+    left: 50%;
+    margin: 0 0 0 -200px;
+  }
+  
+  #flash-container-bad {
+    width: 400px;
+    background-color: rgb(228, 110, 110);
+    position: absolute;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+    border: 3px solid rgb(216, 61, 61);
+    top: 13%;
+    left: 50%;
+    margin: 0 0 0 -200px;
+  }
