@@ -93,7 +93,7 @@ function StatusBox({username}) {
             <div className='divider' />
             <Box id="otherStatusBox">
                 <h1>Status</h1>
-                <Stack spacing={2} id="statusList">
+                <div id="statusList">
                     {statuses.map(function(userStatus){
                         if (userStatus == 'Nothing to show.') {
                             return(
@@ -101,10 +101,11 @@ function StatusBox({username}) {
                             )
                         }
                         return(
-                            <ShowStatusCard status={userStatus}/>
+                            <><ShowStatusCard status={userStatus} />
+                            <div className='divider' /></>
                         )
                         })}
-                </Stack>
+                </div>
             </Box>
         </div>
         </>

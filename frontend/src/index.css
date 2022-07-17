@@ -336,6 +336,7 @@ h2 {
 
 #home-content #statusTab #otherStatusBox #statusList {
     width: 100%;
+    display: block;
     height: 300px;
     overflow: auto;
     align-items: center;
@@ -397,7 +398,7 @@ h2 {
     line-height: 72px;
     color: #fff;
     text-align: center;
-    background-color: #751919;
+    background-color: #58A4B0;
     border-radius: 12px;
     display: block;
     width: 100%;
