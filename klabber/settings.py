@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-tv@60b*6mfcdbhgkmw=3=45cum9pakh)q-p^=wk1*j1_!s760!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -94,10 +94,6 @@ WSGI_APPLICATION = 'klabber.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
 }
 
 

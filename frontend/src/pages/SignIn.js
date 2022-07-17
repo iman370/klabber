@@ -38,7 +38,7 @@ function SignIn(props) {
       }, [username])
 
     const login = (username,password) => {
-        var url = 'http://127.0.0.1:8000/api/login/'
+        var url = 'https://klabber.vercel.app//api/login/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'POST',
