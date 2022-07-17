@@ -38,7 +38,7 @@ function SignIn(props) {
       }, [username])
 
     const login = (username,password) => {
-        var url = 'https://klabber.vercel.app//api/login/'
+        var url = 'https://klabber.vercel.app/api/login/'
         var csrftoken = getCookie('csrftoken')
         fetch(url, {
             method: 'POST',
