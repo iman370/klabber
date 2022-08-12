@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1588a562.css",
+    "main.js": "/static/js/main.96758aeb.js",
+    "static/js/787.cda612ba.chunk.js": "/static/js/787.cda612ba.chunk.js",
+    "static/media/klabber-logo.png": "/static/media/klabber-logo.7cfad4593d8483292229.png",
+    "index.html": "/index.html",
+    "main.1588a562.css.map": "/static/css/main.1588a562.css.map",
+    "main.96758aeb.js.map": "/static/js/main.96758aeb.js.map",
+    "787.cda612ba.chunk.js.map": "/static/js/787.cda612ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1588a562.css",
+    "static/js/main.96758aeb.js"
+  ]
+}
