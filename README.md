@@ -1,5 +1,7 @@
 # klabber
 This is a twitter-like scheduling website made just for fun.
+
+** WEBSITE NOT YET ACTIVE **
 ----
 This uses Django, React.js (I'm also using material-ui to make the website look nicer) and REST API.
 
